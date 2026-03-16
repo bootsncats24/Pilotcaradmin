@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pilot Car Admin Marketing Website
+
+A modern, professional marketing website for Pilot Car Admin built with Next.js 16, TypeScript, and Tailwind CSS.
+
+## Features
+
+- **Modern Design**: Dark purple and white color scheme with smooth animations
+- **Responsive**: Fully responsive design that works on all devices
+- **Fast**: Built with Next.js 16 for optimal performance
+- **SEO Friendly**: Proper metadata and semantic HTML
+
+## Pages
+
+- **Homepage** (`/`): Hero section, feature highlights, how it works, testimonials, and CTA
+- **Features** (`/features`): Detailed breakdown of all Pilot Car Admin features
+- **Pricing** (`/pricing`): License pricing tiers and FAQ section
 
 ## Getting Started
 
-First, run the development server:
+### Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js 16**: React framework with App Router
+- **TypeScript**: Type-safe development
+- **Tailwind CSS v4**: Utility-first CSS framework
+- **React 19**: Latest React features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+marketing-website/
+├── app/                    # Next.js App Router pages
+│   ├── layout.tsx         # Root layout with Navbar and Footer
+│   ├── page.tsx           # Homepage
+│   ├── features/          # Features page
+│   └── pricing/           # Pricing page
+├── components/
+│   ├── ui/                # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   └── sections/          # Page sections
+│       ├── Hero.tsx
+│       ├── Features.tsx
+│       ├── HowItWorks.tsx
+│       ├── Testimonials.tsx
+│       └── CTA.tsx
+├── lib/
+│   └── utils.ts           # Utility functions
+└── public/                # Static assets
+```
 
-## Deploy on Vercel
+## Color Scheme
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The website uses a dark purple and white color scheme:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Primary Purple**: `#6b21a8` (purple-800)
+- **Light Purple**: `#7c3aed` (purple-700)
+- **Accent Purple**: `#8b5cf6` (purple-600)
+- **White**: `#ffffff`
+- **Gray backgrounds**: `#f9fafb` (gray-50)
+
+## Customization
+
+### Colors
+
+Colors are defined in `app/globals.css` using CSS variables and in `tailwind.config.ts` for Tailwind classes.
+
+### Content
+
+Update content in:
+- `components/sections/` for homepage sections
+- `app/features/page.tsx` for features page
+- `app/pricing/page.tsx` for pricing page
+
+## License
+
+Part of the Pilot Car Admin project.

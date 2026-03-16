@@ -4,12 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "cd demo-app && npm install && npm run build && cd .. && next build",
+    "build:demo": "cd demo-app && npm install && npm run build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@types/nodemailer": "^7.0.11",
     "next": "16.1.1",
+    "nodemailer": "^8.0.2",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },

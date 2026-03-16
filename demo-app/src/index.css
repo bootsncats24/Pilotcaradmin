@@ -1,0 +1,274 @@
+/* CRITICAL FIX: Force inputs to be interactive - MUST BE FIRST */
+* {
+  -webkit-user-select: auto !important;
+  user-select: auto !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+input:not([disabled]),
+textarea:not([disabled]) {
+  pointer-events: auto !important;
+  cursor: text !important;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  touch-action: manipulation !important;
+}
+
+select:not([disabled]) {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  touch-action: manipulation !important;
+}
+
+input:not([disabled]):focus,
+textarea:not([disabled]):focus {
+  pointer-events: auto !important;
+  cursor: text !important;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  outline: none !important;
+  touch-action: manipulation !important;
+}
+
+select:not([disabled]):focus {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  outline: none !important;
+  touch-action: manipulation !important;
+}
+
+/* Ensure inputs are never blocked by parent elements */
+input:not([disabled]),
+textarea:not([disabled]) {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+select:not([disabled]) {
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* ============================================
+   FLUENT DESIGN TYPOGRAPHY SYSTEM
+   Modern font stack with improved spacing
+   ============================================ */
+
+/* Modern Font Stack - Applied globally */
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Typography */
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  overflow: hidden;
+  height: 100%;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--text-primary, #1f2937);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  height: 100%;
+  margin-top: 0;
+  padding-top: 0;
+  background-color: var(--bg-secondary, #f9fafb);
+}
+
+#root {
+  height: 100vh;
+  width: 100%;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  position: relative;
+}
+
+#root > * {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Typography Scale */
+h1, .h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  color: var(--text-primary, #1f2937);
+  margin: 0;
+}
+
+h2, .h2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.25px;
+  color: var(--text-primary, #1f2937);
+  margin: 0;
+}
+
+h3, .h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--text-primary, #1f2937);
+  margin: 0;
+}
+
+h4, .h4 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--text-primary, #1f2937);
+  margin: 0;
+}
+
+p, .body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--text-primary, #1f2937);
+  margin: 0;
+}
+
+.body-small {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--text-secondary, #6b7280);
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.1px;
+  color: var(--text-primary, #1f2937);
+}
+
+.caption {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  color: var(--text-tertiary, #9ca3af);
+}
+
+/* Font Weight Utilities */
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Button styles */
+button {
+  background-color: var(--button-primary, #667eea);
+  color: var(--button-primary-text, #ffffff);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-md, 8px);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all var(--transition-base, 200ms);
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: var(--button-primary-hover, #5568d3);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  background-color: var(--text-disabled, #d1d5db);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Form styles */
+input, textarea, select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--input-border, #d1d5db);
+  border-radius: var(--radius-md, 8px);
+  font-size: 14px;
+  font-family: inherit;
+  background-color: var(--input-bg, #ffffff);
+  transition: all var(--transition-base, 200ms);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--input-border-focus, #667eea);
+  box-shadow: var(--input-shadow-focus, 0 0 0 3px rgba(102, 126, 234, 0.1));
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card-bg, #ffffff);
+  box-shadow: var(--card-shadow, 0 2px 6px rgba(0, 0, 0, 0.06));
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-light, #f3f4f6);
+}
+
+th {
+  background-color: var(--bg-secondary, #f9fafb);
+  font-weight: 600;
+  color: var(--text-primary, #374151);
+}
+
+tr:hover {
+  background-color: var(--bg-secondary, #f9fafb);
+}
+
+/* Card styles */
+.card {
+  background-color: var(--card-bg, #ffffff);
+  border-radius: var(--radius-lg, 12px);
+  padding: 20px;
+  box-shadow: var(--card-shadow, 0 2px 6px rgba(0, 0, 0, 0.06));
+  margin-bottom: 20px;
+  border: 1px solid var(--card-border, rgba(0, 0, 0, 0.06));
+}
+
+.card-header {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-primary, #111827);
+}

@@ -1,0 +1,35 @@
+{
+  "features": {},
+  "featureSections": {
+    "invoice-0": "1769448157582-billingrates.png",
+    "invoice-1": "1769448176887-statusmanagement.png",
+    "invoice-2": "1769448221934-custominvoicec.png",
+    "mileage-tracking-0": "1770439298779-personvalvsbusiness.png",
+    "mileage-tracking-1": "1770439301170-multplyvehicles.png",
+    "mileage-tracking-2": "mileagededuction.png",
+    "expenses-0": "1770500495977-Screenshot_2026-02-07_134124.png",
+    "expenses-1": "1770500390834-cvsimport.png",
+    "expenses-2": "1770500543269-category.png",
+    "calendar-0": "1770676947691-Screenshot_2026-02-09_144216.png",
+    "calendar-1": "1770691446030-Screenshot_2026-02-09_184345.png",
+    "calendar-2": "1770691942245-Screenshot_2026-02-09_185211.png",
+    "calendar-3": "1770691535083-Screenshot_2026-02-09_184519.png",
+    "offline-0": "1770676771241-Screenshot_2026-02-09_143918.png",
+    "offline-1": "1770692130415-Screenshot_2026-02-09_185429.png",
+    "offline-2": "1770692128496-Screenshot_2026-02-09_185406.png"
+  },
+  "homeFeatures": {
+    "mileage-tracking": "1770676850027-Screenshot_2026-02-09_144037.png",
+    "invoice": "1770676888618-Screenshot_2026-02-09_144116.png",
+    "expenses": "1770677011693-Screenshot_2026-02-09_144311.png",
+    "calendar": "1769447988156-calendar_.png",
+    "jobs": "1769447988156-calendar_.png",
+    "offline": "1770676771241-Screenshot_2026-02-09_143918.png",
+    "sync": "1770677417212-Screenshot_2026-02-09_145000.png",
+    "security": "1770677498332-Screenshot_2026-02-09_145102.png"
+  },
+  "useCases": {},
+  "hero": "1770692266225-ChatGPT_Image_Feb_9__2026__03_24_38_PM.png",
+  "heroContent": "1770676771241-Screenshot_2026-02-09_143918.png",
+  "testimonials": {}
+}
