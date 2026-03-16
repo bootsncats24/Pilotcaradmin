@@ -65,7 +65,10 @@ export function setLockTimeout(timeoutMs: number): void {
   }
 }
 
-export async function changePassword(currentPassword: string, newPassword: string): Promise<{ success: boolean; error?: string }> {
+export async function changePassword(
+  _currentPassword: string,
+  _newPassword: string
+): Promise<{ success: boolean; error?: string }> {
   // In demo mode, just return success
   return { success: true };
 }

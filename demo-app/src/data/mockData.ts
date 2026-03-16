@@ -1,15 +1,5 @@
 // Mock data for demo - Expanded with full relationships
 
-// Helper to convert string IDs to numeric IDs
-const idMap: Record<string, number> = {};
-let nextNumericId = 1;
-function getNumericId(stringId: string): number {
-  if (!idMap[stringId]) {
-    idMap[stringId] = nextNumericId++;
-  }
-  return idMap[stringId];
-}
-
 export const vehicles = [
   { id: "V-001", name: "Pilot Car 1", make: "Ford", model: "Explorer", year: 2018, plate: "PC-4729", isDefault: true },
   { id: "V-002", name: "Pilot Car 2", make: "Toyota", model: "RAV4", year: 2021, plate: "PC-1938", isDefault: false }

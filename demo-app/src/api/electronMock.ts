@@ -67,12 +67,12 @@ export function createElectronAPIMock() {
 
   const electronAPI = {
     // Database operations - mocked for demo (no actual database)
-    dbQuery: async (queryStr: string, params?: any[]): Promise<any> => {
+    dbQuery: async (_queryStr: string, _params?: any[]): Promise<any> => {
       // Return empty result for demo
       return [];
     },
 
-    dbTransaction: async (queries: Array<{ query: string; params: any[] }>): Promise<any[]> => {
+    dbTransaction: async (_queries: Array<{ query: string; params: any[] }>): Promise<any[]> => {
       // Return empty results for demo
       return [];
     },
@@ -83,6 +83,7 @@ export function createElectronAPIMock() {
       return {
         success: false,
         error: 'Backup not available in demo mode',
+        message: 'Backup not available in demo mode',
       };
     },
 

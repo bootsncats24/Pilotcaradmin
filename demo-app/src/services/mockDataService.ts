@@ -287,7 +287,7 @@ export class MockDataService {
         to_destination_name: delivery,
       });
     } else if (inv.billingType === 'Day Rate' || run.rateType === 'Day Rate') {
-      const dayRate = inv.dayRate || run.dayRate || 850;
+      const dayRate = inv.dayRate || (run as any).dayRate || 850;
       const pickup = inv.pickup || run.pickup || '';
       const delivery = inv.delivery || run.delivery || '';
       items.push({
@@ -572,7 +572,7 @@ export class MockDataService {
       if (vehicle) {
         const vehicleStringId = vehicle.id;
         result = result.filter(m => {
-          const mileage = mockMileage.find(me => me.id === m.id);
+          const mileage = mockMileage.find(me => getNumericId(me.id) === m.id);
           return mileage?.vehicleId === vehicleStringId;
         });
       }

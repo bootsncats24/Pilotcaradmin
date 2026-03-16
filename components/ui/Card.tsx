@@ -5,9 +5,10 @@ interface CardProps {
   className?: string;
   hover?: boolean;
   style?: CSSProperties;
+  id?: string;
 }
 
-export default function Card({ children, className = '', hover = true, style }: CardProps) {
+export default function Card({ children, className = '', hover = true, style, id }: CardProps) {
   const baseClasses =
     'bg-white rounded-xl shadow-md p-6 transition-all duration-300 ease-in-out';
   const hoverClasses = hover
@@ -15,7 +16,7 @@ export default function Card({ children, className = '', hover = true, style }: 
     : '';
   
   return (
-    <div className={`${baseClasses} ${hoverClasses} ${className}`} style={style}>
+    <div id={id} className={`${baseClasses} ${hoverClasses} ${className}`} style={style}>
       {children}
     </div>
   );

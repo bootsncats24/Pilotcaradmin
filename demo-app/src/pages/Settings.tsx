@@ -1,4 +1,3 @@
-/// <reference types="../types/electron" />
 import React, { useState, useEffect, useRef } from 'react';
 import { Settings } from '../shared/types';
 import { MockDataService } from '../services/mockDataService';

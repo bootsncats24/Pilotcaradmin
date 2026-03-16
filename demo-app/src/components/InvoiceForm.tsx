@@ -15,6 +15,7 @@ const BILLING_TYPE_LABELS: Record<BillingType, string> = {
   day_rate: 'Day Rate',
   hourly: 'Hourly',
   chase_pole: 'Chase/Pole',
+  other: 'Other',
 };
 
 const getRateLabel = (items: InvoiceItem[]): string => {
@@ -105,6 +106,7 @@ export default function InvoiceForm({ invoice, onSave, onCancel }: InvoiceFormPr
     day_rate: 0,
     hourly: 0,
     chase_pole: 0,
+    other: 0,
     overnight: 0,
     tax: 0,
   });
@@ -151,6 +153,7 @@ export default function InvoiceForm({ invoice, onSave, onCancel }: InvoiceFormPr
         day_rate: settingsData.day_rate || 0,
         hourly: settingsData.hourly_rate || 0,
         chase_pole: settingsData.chase_pole_base_rate || 0,
+        other: 0,
         overnight: settingsData.overnight_rate || 0,
         tax: 0,
       });
@@ -357,6 +360,7 @@ export default function InvoiceForm({ invoice, onSave, onCancel }: InvoiceFormPr
           day_rate: defaultRates.day_rate,
           hourly: defaultRates.hourly,
           chase_pole: defaultRates.chase_pole,
+          other: defaultRates.other,
         };
         const newType = value as BillingType;
         const newRate = rateMap[newType] || 0;

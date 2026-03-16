@@ -128,7 +128,7 @@ export class ReportGenerator {
       endDate,
     });
     // Filter for business mileage
-    const businessMileageEntries = mileageEntries.filter(entry => entry.is_business === 1);
+    const businessMileageEntries = mileageEntries.filter(entry => entry.is_business);
 
     const totalBusinessMiles = businessMileageEntries.reduce((sum, entry) => sum + entry.miles, 0);
     const settings = await MockDataService.getSettings();

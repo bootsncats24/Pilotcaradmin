@@ -54,7 +54,7 @@ export interface Destination {
   updated_at?: string;
 }
 
-export type BillingType = 'mile' | 'mini_run' | 'day_rate' | 'hourly' | 'chase_pole';
+export type BillingType = 'mile' | 'mini_run' | 'day_rate' | 'hourly' | 'chase_pole' | 'other';
 export type InvoiceStatus = 'draft' | 'sent' | 'paid' | 'overdue' | 'cancelled';
 export type PaymentType = 'cash' | 'check' | 'credit_card' | 'ach' | 'wire' | 'bank_transfer' | 'other';
 

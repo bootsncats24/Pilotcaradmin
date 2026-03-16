@@ -111,7 +111,7 @@ export class AutoCategorizor {
   static categorize(
     description: string,
     vendor?: string,
-    amount?: number,
+    _amount?: number,
     customRules?: Array<{ category: string; keywords: string[] }>
   ): CategoryMatch | null {
     const searchText = `${description} ${vendor || ''}`.toLowerCase().trim();

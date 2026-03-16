@@ -14,6 +14,7 @@ const BILLING_TYPE_LABELS: Record<BillingType, string> = {
   day_rate: 'Day Rate',
   hourly: 'Hourly',
   chase_pole: 'Chase/Pole',
+  other: 'Other',
 };
 
 export default function InvoiceCSVPreview({ invoices, onImport, onCancel }: InvoiceCSVPreviewProps) {

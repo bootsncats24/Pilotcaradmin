@@ -17,7 +17,7 @@ function getClientIp(req: NextRequest): string {
   if (forwarded) {
     return forwarded.split(',')[0]?.trim() || 'unknown';
   }
-  return req.ip ?? 'unknown';
+  return 'unknown';
 }
 
 function checkRateLimit(ip: string): boolean {
