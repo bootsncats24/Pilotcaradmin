@@ -151,6 +151,13 @@
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Ensure full-height layout inside iframe on mobile */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /* Remove spacing from Router wrapper */
 #root > div {
   margin-top: 0 !important;
@@ -161,7 +168,8 @@
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   overflow: hidden;
   margin-top: 0 !important;
   padding-top: 0 !important;

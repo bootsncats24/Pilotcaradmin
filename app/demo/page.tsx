@@ -48,7 +48,18 @@ export default function DemoPage() {
   }
 
   return (
-    <div style={{ width: '100%', height: '100%', margin: 0, padding: 0, display: 'flex', flexDirection: 'column' }}>
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        maxWidth: '100%',
+        margin: 0,
+        padding: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+      }}
+    >
       {/* Demo Banner */}
       <div style={{
         width: '100%',
@@ -96,7 +107,7 @@ export default function DemoPage() {
         src={demoUrl}
         style={{
           width: '100%',
-          flex: 1,
+          height: 'calc(100vh - 40px)',
           border: 'none',
           display: 'block',
           margin: 0,
