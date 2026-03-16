@@ -917,8 +917,15 @@ export default function InvoiceView() {
                   
                   return (
                     <tr key={index}>
-                      <td style={{ wordWrap: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}>{displayDescription}</td>
-                      <td style={{ textAlign: 'right' }}>${item.amount.toFixed(2)}</td>
+                      <td
+                        data-label="Description"
+                        style={{ wordWrap: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
+                      >
+                        {displayDescription}
+                      </td>
+                      <td data-label="Amount" style={{ textAlign: 'right' }}>
+                        ${item.amount.toFixed(2)}
+                      </td>
                     </tr>
                   );
                 }
@@ -948,12 +955,41 @@ export default function InvoiceView() {
 
                 return (
                   <tr key={index}>
-                    <td style={{ wordWrap: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal', maxWidth: '250px' }}>{displayDescription}</td>
-                    <td style={{ whiteSpace: 'nowrap' }}>{runDateStr}</td>
-                    <td style={{ wordWrap: 'break-word', overflowWrap: 'break-word', whiteSpace: 'pre-line', maxWidth: '200px', verticalAlign: 'top' }}>{route}</td>
-                    <td style={{ whiteSpace: 'nowrap' }}>{milesDisplay}</td>
-                    <td style={{ whiteSpace: 'nowrap' }}>${item.rate.toFixed(2)}</td>
-                    <td style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>${item.amount.toFixed(2)}</td>
+                    <td
+                      data-label="Description"
+                      style={{
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
+                        whiteSpace: 'normal',
+                        maxWidth: '250px',
+                      }}
+                    >
+                      {displayDescription}
+                    </td>
+                    <td data-label="Run Date" style={{ whiteSpace: 'nowrap' }}>
+                      {runDateStr}
+                    </td>
+                    <td
+                      data-label="From/To"
+                      style={{
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
+                        whiteSpace: 'pre-line',
+                        maxWidth: '200px',
+                        verticalAlign: 'top',
+                      }}
+                    >
+                      {route}
+                    </td>
+                    <td data-label={getMilesLabel(invoice.items || [])} style={{ whiteSpace: 'nowrap' }}>
+                      {milesDisplay}
+                    </td>
+                    <td data-label={getRateLabel(invoice.items || [])} style={{ whiteSpace: 'nowrap' }}>
+                      ${item.rate.toFixed(2)}
+                    </td>
+                    <td data-label="Amount" style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
+                      ${item.amount.toFixed(2)}
+                    </td>
                   </tr>
                 );
               })

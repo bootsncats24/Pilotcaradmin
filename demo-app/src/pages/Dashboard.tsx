@@ -397,10 +397,28 @@ export default function Dashboard() {
                     style={{ cursor: 'pointer' }}
                     onClick={() => navigate(`/invoices/${invoice.id}`)}
                   >
-                    <td style={{ width: '14%', padding: '1.25rem 1rem', textAlign: 'left' }}>{invoice.invoice_number}</td>
-                    <td style={{ width: '30%', padding: '1.25rem 1rem', textAlign: 'left' }}>{(invoice as any).customer_name || invoice.customer?.name || 'N/A'}</td>
-                    <td style={{ width: '16%', padding: '1.25rem 1rem', textAlign: 'left' }}>{formatLocalDate(invoice.date)}</td>
-                    <td style={{ width: '20%', padding: '1.25rem 1rem', textAlign: 'left' }}>
+                    <td
+                      data-label="Invoice #"
+                      style={{ width: '14%', padding: '1.25rem 1rem', textAlign: 'left' }}
+                    >
+                      {invoice.invoice_number}
+                    </td>
+                    <td
+                      data-label="Customer"
+                      style={{ width: '30%', padding: '1.25rem 1rem', textAlign: 'left' }}
+                    >
+                      {(invoice as any).customer_name || invoice.customer?.name || 'N/A'}
+                    </td>
+                    <td
+                      data-label="Date"
+                      style={{ width: '16%', padding: '1.25rem 1rem', textAlign: 'left' }}
+                    >
+                      {formatLocalDate(invoice.date)}
+                    </td>
+                    <td
+                      data-label="Status"
+                      style={{ width: '20%', padding: '1.25rem 1rem', textAlign: 'left' }}
+                    >
                       {(() => {
                         const displayStatus = getInvoiceDisplayStatus(invoice);
                         return (
@@ -410,7 +428,12 @@ export default function Dashboard() {
                         );
                       })()}
                     </td>
-                    <td style={{ width: '20%', padding: '1.25rem 1rem', textAlign: 'right' }}>${invoice.total.toFixed(2)}</td>
+                    <td
+                      data-label="Total"
+                      style={{ width: '20%', padding: '1.25rem 1rem', textAlign: 'right' }}
+                    >
+                      ${invoice.total.toFixed(2)}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -450,10 +473,14 @@ export default function Dashboard() {
                         style={{ cursor: 'pointer' }}
                         onClick={() => navigate(`/invoices/${reminder.invoice_id}`)}
                       >
-                        <td>{formatLocalDate(reminder.reminder_date)}</td>
-                        <td>{(reminder as any).invoice_number || 'N/A'}</td>
-                        <td>{(reminder as any).customer_name || 'N/A'}</td>
-                        <td>{reminder.notes || '-'}</td>
+                        <td data-label="Date">{formatLocalDate(reminder.reminder_date)}</td>
+                        <td data-label="Invoice">
+                          {(reminder as any).invoice_number || 'N/A'}
+                        </td>
+                        <td data-label="Customer">
+                          {(reminder as any).customer_name || 'N/A'}
+                        </td>
+                        <td data-label="Notes">{reminder.notes || '-'}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -491,27 +518,35 @@ export default function Dashboard() {
                       return (
                         <tr
                           key={bill.id}
-                          style={{ 
+                          style={{
                             cursor: 'pointer',
-                            backgroundColor: isOverdue ? '#ffebee' : 'inherit'
+                            backgroundColor: isOverdue ? '#ffebee' : 'inherit',
                           }}
                           onClick={() => navigate('/bills')}
                         >
-                          <td>
+                          <td data-label="Bill">
                             <strong>{bill.name}</strong>
                             {bill.is_recurring && (
-                              <span className="badge badge-paid" style={{ marginLeft: '0.5rem', fontSize: '0.7rem' }}>
+                              <span
+                                className="badge badge-paid"
+                                style={{ marginLeft: '0.5rem', fontSize: '0.7rem' }}
+                              >
                                 Recurring
                               </span>
                             )}
                           </td>
-                          <td>
+                          <td data-label="Due Date">
                             {formatLocalDate(bill.due_date)}
                             {isOverdue && (
-                              <span className="badge badge-overdue" style={{ marginLeft: '0.5rem' }}>Overdue</span>
+                              <span
+                                className="badge badge-overdue"
+                                style={{ marginLeft: '0.5rem' }}
+                              >
+                                Overdue
+                              </span>
                             )}
                           </td>
-                          <td>${bill.amount.toFixed(2)}</td>
+                          <td data-label="Amount">${bill.amount.toFixed(2)}</td>
                         </tr>
                       );
                     })}
@@ -555,17 +590,35 @@ export default function Dashboard() {
                 {recentExpenses.map((expense) => {
                   const categoryName = (expense as any).category_name || 'Uncategorized';
                   const categoryColor = (expense as any).category_color || '#95a5a6';
-                  
+
                   return (
                     <tr
                       key={expense.id}
                       style={{ cursor: 'pointer' }}
                       onClick={() => navigate('/transactions')}
                     >
-                      <td style={{ width: '14%', padding: '1.25rem 1rem', textAlign: 'left' }}>{formatLocalDate(expense.date)}</td>
-                      <td style={{ width: '30%', padding: '1.25rem 1rem', textAlign: 'left' }}>{expense.description}</td>
-                      <td style={{ width: '16%', padding: '1.25rem 1rem', textAlign: 'left' }}>{expense.vendor || '-'}</td>
-                      <td style={{ width: '20%', padding: '1.25rem 1rem', textAlign: 'left' }}>
+                      <td
+                        data-label="Date"
+                        style={{ width: '14%', padding: '1.25rem 1rem', textAlign: 'left' }}
+                      >
+                        {formatLocalDate(expense.date)}
+                      </td>
+                      <td
+                        data-label="Description"
+                        style={{ width: '30%', padding: '1.25rem 1rem', textAlign: 'left' }}
+                      >
+                        {expense.description}
+                      </td>
+                      <td
+                        data-label="Vendor"
+                        style={{ width: '16%', padding: '1.25rem 1rem', textAlign: 'left' }}
+                      >
+                        {expense.vendor || '-'}
+                      </td>
+                      <td
+                        data-label="Category"
+                        style={{ width: '20%', padding: '1.25rem 1rem', textAlign: 'left' }}
+                      >
                         {expense.category_id ? (
                           <span className="badge" style={{ backgroundColor: categoryColor }}>
                             {categoryName}
@@ -574,7 +627,12 @@ export default function Dashboard() {
                           <span className="badge badge-draft">Uncategorized</span>
                         )}
                       </td>
-                      <td style={{ width: '20%', padding: '1.25rem 1rem', textAlign: 'right' }}>${expense.amount.toFixed(2)}</td>
+                      <td
+                        data-label="Amount"
+                        style={{ width: '20%', padding: '1.25rem 1rem', textAlign: 'right' }}
+                      >
+                        ${expense.amount.toFixed(2)}
+                      </td>
                     </tr>
                   );
                 })}
