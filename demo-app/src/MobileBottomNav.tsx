@@ -32,9 +32,13 @@ export default function MobileBottomNav() {
           key={tab.to}
           to={tab.to}
           className={isActive(tab) ? 'active' : ''}
+          aria-label={tab.label}
+          aria-current={isActive(tab) ? 'page' : undefined}
         >
-          <span aria-hidden="true">{tab.icon}</span>
-          <span>{tab.label}</span>
+          <span className="mobile-bottom-nav-icon" aria-hidden="true">
+            {tab.icon}
+          </span>
+          <span className="mobile-bottom-nav-label">{tab.label}</span>
         </Link>
       ))}
     </nav>
