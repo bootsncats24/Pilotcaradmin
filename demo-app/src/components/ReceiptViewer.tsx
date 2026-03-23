@@ -86,7 +86,7 @@ export default function ReceiptViewer({ receipt, transactions, onUpdate, onDelet
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', alignItems: 'start' }}>
+    <div className="responsive-two-col">
       <div className="card" style={{ position: 'relative', zIndex: 1 }}>
         <h3>Receipt Image</h3>
         {imageData ? (

@@ -149,6 +149,9 @@
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Mobile */
+  --mobile-bottom-nav-height: 72px;
 }
 
 /* Ensure full-height layout inside iframe on mobile */
@@ -156,6 +159,12 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* Mobile browsers need `dvh` instead of `vh` to account for UI chrome. */
+#root {
+  height: 100dvh;
+  min-height: 100dvh;
 }
 
 /* Remove spacing from Router wrapper */
@@ -169,7 +178,7 @@ html, body, #root {
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   overflow: hidden;
   margin-top: 0 !important;
   padding-top: 0 !important;
@@ -197,7 +206,7 @@ html, body, #root {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100dvh;
   font-size: 1.2rem;
   color: var(--text-secondary);
   background: var(--bg-secondary);
@@ -572,6 +581,7 @@ html, body, #root {
 @media (max-width: 768px) {
   .main-content {
     padding: 1rem;
+    padding-bottom: calc(1rem + var(--mobile-bottom-nav-height)) !important;
   }
 }
 
@@ -590,6 +600,85 @@ html, body, #root {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Mobile shell (bottom tabs)
+   ============================================ */
+
+.desktop-nav {
+  display: block;
+}
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+.mobile-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--mobile-bottom-nav-height);
+  background: var(--gradient-primary);
+  color: white;
+  z-index: 200;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 0.4rem 0.5rem;
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mobile-bottom-nav a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.45rem 0.25rem;
+  border-radius: 12px;
+  flex: 1 1 0;
+}
+
+.mobile-bottom-nav a.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+  }
+}
+
+/* ============================================
+   Responsive 2-column layout helper
+   ============================================ */
+
+.responsive-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .responsive-two-col {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }
 
@@ -1963,6 +2052,12 @@ html, body, #root {
   /* Keep last cell right-aligned for numeric values */
   .table tbody td:last-child {
     justify-content: space-between;
+  }
+
+  /* Some tables specify `min-width` on <col> which can force overflow.
+     The mobile table layout switches to stacked cards, so allow columns to shrink. */
+  .table col {
+    min-width: 0 !important;
   }
 }
 

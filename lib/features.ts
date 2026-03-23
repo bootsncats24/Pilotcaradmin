@@ -416,13 +416,13 @@ export const featuresData: Record<string, FeatureData> = {
     id: 'sync',
     slug: 'sync',
     title: 'Sync That Just Works',
-    tagline: 'Your data stays in sync—desktop and mobile',
-    description: 'Your data stays in sync—desktop and mobile. Offline-first with secure, bidirectional sync between devices. No accounts, no cloud dependency, no surprise conflicts.',
+    tagline: 'Your data stays in sync between desktop and mobile (coming soon)',
+    description: 'Your data stays in sync between desktop and mobile (mobile app coming soon). Offline-first with secure, bidirectional sync between devices. No accounts, no cloud dependency, no surprise conflicts.',
     heroDescription: 'Offline-first with secure, bidirectional sync between devices. No accounts, no cloud dependency, no surprise conflicts. Your data, synced your way.',
     sections: [
       {
         title: 'Bidirectional sync made simple',
-        description: 'Sync your data between desktop and mobile devices seamlessly. Changes on one device automatically appear on the other. No manual import/export needed—just sync and go.',
+        description: 'Sync your data between desktop and mobile devices seamlessly once the mobile app is released. Changes on one device automatically appear on the other. No manual import/export needed—just sync and go.',
         features: [
           'Automatic bidirectional data sync',
           'Sync invoices, expenses, mileage, and more',

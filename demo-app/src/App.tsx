@@ -23,6 +23,7 @@ import InvoiceView from './components/InvoiceView';
 import CustomerView from './components/CustomerView';
 import DestinationView from './components/DestinationView';
 import TransactionView from './components/TransactionView';
+import MobileBottomNav from './MobileBottomNav';
 import * as authService from './services/auth';
 import { MockDataService } from './services/mockDataService';
 import './App.css';
@@ -176,7 +177,9 @@ function App() {
             element={
               <ProtectedRoute>
                 <>
-                  <Navigation />
+                  <div className="desktop-nav">
+                    <Navigation />
+                  </div>
                   <main className="main-content">
                     <Routes>
                       <Route path="/" element={<Dashboard />} />
@@ -204,6 +207,7 @@ function App() {
                       <Route path="/guide" element={<Guide />} />
                     </Routes>
                   </main>
+                  <MobileBottomNav />
                 </>
               </ProtectedRoute>
             }

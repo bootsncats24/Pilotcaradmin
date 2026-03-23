@@ -60,8 +60,8 @@ const mainFeatures: Feature[] = [
   {
     title: 'Sync That Just Works',
     description: [
-      'Your data stays in sync—desktop and mobile.',
-      'Offline-first with secure, bidirectional sync between devices. No accounts, no cloud dependency, no surprise conflicts.'
+      'Your data stays in sync between desktop and mobile (mobile app coming soon).',
+      'Offline-first with secure, bidirectional sync between devices. No accounts, no cloud dependency, no surprise conflicts once mobile is live.'
     ],
     learnMore: '/sync',
     ctaText: 'See sync in action',

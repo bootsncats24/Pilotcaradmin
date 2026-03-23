@@ -88,24 +88,24 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-16 gap-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 transition-transform duration-200 hover:scale-105">
+          <Link href="/" className="flex items-center space-x-2 transition-transform duration-200 hover:scale-105 min-w-0 flex-1">
           <img 
             src="/pilotcaradminlogo.png" 
             alt="Pilot Car Admin 2026" 
-            className="h-10 w-auto"
+            className="h-8 w-auto sm:h-9 md:h-10 flex-shrink-0"
           />
-          <span className="text-2xl font-bold text-primary-800">
+          <span className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-2xl font-bold text-primary-800 leading-none whitespace-nowrap truncate max-w-[150px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-none">
             Pilot Car Admin 2026
           </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden xl:flex items-center gap-5 2xl:gap-8">
             <Link
               href="/"
-              className="text-gray-700 hover:text-primary-800 font-medium transition-colors duration-200 relative group"
+              className="text-sm 2xl:text-base text-gray-700 hover:text-primary-800 font-medium transition-colors duration-200 relative group"
             >
               Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-800 transition-all duration-300 group-hover:w-full"></span>
@@ -128,7 +128,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className="text-gray-700 hover:text-primary-800 font-medium transition-colors duration-200 flex items-center gap-1 relative group py-2"
+                      className="text-sm 2xl:text-base text-gray-700 hover:text-primary-800 font-medium transition-colors duration-200 flex items-center gap-1 relative group py-2 whitespace-nowrap"
                     >
                       {link.label}
                       <svg
@@ -167,7 +167,7 @@ export default function Navbar() {
                 ) : (
                   <Link
                     href={link.href}
-                    className="text-gray-700 hover:text-primary-800 font-medium transition-colors duration-200 relative group"
+                    className="text-sm 2xl:text-base text-gray-700 hover:text-primary-800 font-medium transition-colors duration-200 relative group whitespace-nowrap"
                   >
                     {link.label}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-800 transition-all duration-300 group-hover:w-full"></span>
@@ -175,17 +175,17 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-            <Button href="/pricing" variant="primary">
+            <Button href="/pricing" variant="primary" className="text-sm px-4 py-2 whitespace-nowrap">
               View Pricing
             </Button>
-            <Button href="/pricing" variant="secondary" className="bg-primary-800 text-white hover:bg-primary-700">
+            <Button href="/pricing" variant="secondary" className="bg-primary-800 text-white hover:bg-primary-700 text-sm px-4 py-2 whitespace-nowrap">
               Buy Now & Save
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-gray-700 hover:text-primary-800"
+            className="xl:hidden text-gray-700 hover:text-primary-800 flex-shrink-0"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -209,7 +209,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-2">
+          <div className="xl:hidden pb-4 space-y-2">
             <Link
               href="/"
               className="block px-3 py-2 text-gray-700 hover:text-primary-800 hover:bg-primary-50 rounded-md transition-colors"

@@ -3,6 +3,8 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 
 const GUMROAD_URL = 'https://siteops.gumroad.com/l/lgspw?wanted=true';
+const DISCORD_INVITE_URL =
+  process.env.NEXT_PUBLIC_DISCORD_INVITE_URL?.trim() || 'https://discord.gg/EJcMCTSn';
 
 export default function PricingPage() {
   return (
@@ -133,14 +135,25 @@ export default function PricingPage() {
               Why There’s No Subscription
             </h2>
             <p className="text-sm text-gray-700 mb-2">
-              Pilot Car Admin is designed to work fully offline, so there are no cloud servers or
-              storage fees.
+              Pilot Car Admin is built as an offline-first desktop application, which means there
+              are no required cloud servers, storage limits, or ongoing monthly fees.
             </p>
             <p className="text-sm text-gray-700 mb-2">
-              That means you can pay once and keep using the software without monthly charges.
+              You can make a one-time purchase and continue using the software for your day-to-day
+              pilot car invoicing and business tracking without worrying about subscriptions.
+            </p>
+            <p className="text-sm text-gray-700 mb-2">
+              Your business data stays stored on your own device - not locked behind an online
+              account or dependent on an internet connection.
+            </p>
+            <p className="text-sm text-gray-700 mb-2">
+              For drivers who prefer syncing, backups, or access across multiple devices, we are
+              currently developing an optional online subscription-based version of Pilot Car
+              Admin.
             </p>
             <p className="text-sm text-gray-700">
-              Your business data stays on your device, not on a remote server.
+              This future version will provide cloud features while the offline desktop version
+              will remain available as a one-time purchase solution.
             </p>
           </Card>
 
@@ -165,6 +178,17 @@ export default function PricingPage() {
               If you need help installing or using the software, contact:
             </p>
             <p className="text-sm font-mono text-primary-800 mb-3">siteopstudio@gmail.com</p>
+            <p className="text-sm text-gray-700 mb-3">
+              Prefer Discord support? Join the community:
+            </p>
+            <a
+              href={DISCORD_INVITE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-xl bg-primary-700 text-white px-5 py-2.5 font-semibold hover:bg-primary-800 transition-colors mb-3"
+            >
+              Join Discord
+            </a>
             <p className="text-sm text-gray-700">
               Pilot Car Admin is built and maintained by <strong>SiteOps</strong>, a software studio
               focused on building practical tools for real-world operators.

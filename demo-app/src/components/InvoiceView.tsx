@@ -752,7 +752,7 @@ export default function InvoiceView() {
     <>
       <div className="page-header">
         <h1 className="page-title">Invoice {invoice.invoice_number}</h1>
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
           <button className="btn btn-secondary" onClick={() => navigate('/invoices')}>
             Back to List
           </button>
@@ -867,7 +867,7 @@ export default function InvoiceView() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+        <div className="responsive-two-col" style={{ marginBottom: '2rem' }}>
           <div>
             <h3 style={{ color: settings?.invoice_header_color || '#1a1a1a' }}>Bill To:</h3>
             <p><strong>{customerInfo.name}</strong></p>
@@ -1170,7 +1170,7 @@ export default function InvoiceView() {
 
       <div className="card">
         <h3>Reminders</h3>
-        <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem', alignItems: 'flex-end' }}>
+        <div style={{ marginBottom: '1rem', display: 'flex', gap: '1rem', alignItems: 'flex-end', flexWrap: 'wrap' }}>
           <div style={{ flex: 1 }}>
             <label>Reminder Date</label>
             <input

@@ -110,9 +110,6 @@ export default function TransactionForm({ transaction, categories, onSave, onCan
   };
 
   const formRowStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '2rem',
     marginBottom: '2rem',
     visibility: 'visible',
     opacity: 1,
@@ -208,6 +205,7 @@ export default function TransactionForm({ transaction, categories, onSave, onCan
     display: 'flex',
     gap: '1rem',
     justifyContent: 'flex-end',
+    flexWrap: 'wrap',
     marginTop: '3rem',
     paddingTop: '2rem',
     borderTop: '2px solid #e0e0e0',
@@ -242,7 +240,7 @@ export default function TransactionForm({ transaction, categories, onSave, onCan
       </h2>
 
       <form onSubmit={handleSubmit} style={{ width: '100%', display: 'block' }}>
-        <div style={formRowStyle}>
+        <div style={formRowStyle} className="responsive-two-col">
           <div style={formGroupStyle}>
             <label style={labelStyle}>Date *</label>
             <input
@@ -294,7 +292,7 @@ export default function TransactionForm({ transaction, categories, onSave, onCan
           />
         </div>
 
-        <div style={formRowStyle}>
+        <div style={formRowStyle} className="responsive-two-col">
           <div style={formGroupStyle}>
             <label style={labelStyle}>Vendor</label>
             <input

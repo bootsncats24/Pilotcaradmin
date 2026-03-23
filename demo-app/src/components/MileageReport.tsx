@@ -71,7 +71,7 @@ export default function MileageReport({ entries, settings }: MileageReportProps)
       <div className="card" style={{ marginBottom: '1.5rem' }}>
         <h2>IRS Mileage Deduction Summary</h2>
         
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '1.5rem' }}>
+        <div className="responsive-two-col" style={{ marginTop: '1.5rem' }}>
           <div>
             <h3>Total Miles</h3>
             <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#3498db' }}>

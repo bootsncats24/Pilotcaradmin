@@ -83,7 +83,7 @@ export default function CustomerView() {
       <div className="page-header">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
           <h1 className="page-title">Customer Details</h1>
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
             <button className="btn btn-secondary" onClick={() => navigate('/customers')}>
               Back to Customers
             </button>
@@ -100,7 +100,7 @@ export default function CustomerView() {
             {customer.name}
           </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+          <div className="responsive-two-col" style={{ marginBottom: '2rem' }}>
             <div>
               <h3 style={{ marginBottom: '0.75rem', color: '#555' }}>Contact Information</h3>
               
@@ -190,7 +190,7 @@ export default function CustomerView() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+          <div className="responsive-two-col" style={{ marginBottom: '2rem' }}>
             <div>
               <h3 style={{ marginBottom: '0.75rem', color: '#555' }}>Additional Information</h3>
               {customer.tax_id && (

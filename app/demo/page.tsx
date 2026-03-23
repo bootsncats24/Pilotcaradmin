@@ -51,7 +51,7 @@ export default function DemoPage() {
     <div
       style={{
         width: '100vw',
-        height: '100vh',
+        height: '100dvh',
         maxWidth: '100%',
         margin: 0,
         padding: 0,
@@ -61,21 +61,23 @@ export default function DemoPage() {
       }}
     >
       {/* Demo Banner */}
-      <div style={{
-        width: '100%',
-        height: '40px',
-        backgroundColor: '#6b21a8',
-        color: 'white',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 16px',
-        flexShrink: 0,
-        fontSize: '14px',
-        fontWeight: 500,
-        margin: 0,
-        boxSizing: 'border-box'
-      }}>
+      <div
+        style={{
+          width: '100%',
+          minHeight: '40px',
+          backgroundColor: '#6b21a8',
+          color: 'white',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 16px',
+          flexShrink: 0,
+          fontSize: '14px',
+          fontWeight: 500,
+          margin: 0,
+          boxSizing: 'border-box',
+        }}
+      >
         <span>🎯 Live Demo - Pilot Car Admin</span>
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
           <button
@@ -107,7 +109,8 @@ export default function DemoPage() {
         src={demoUrl}
         style={{
           width: '100%',
-          height: 'calc(100vh - 40px)',
+          flex: 1,
+          height: '100%',
           border: 'none',
           display: 'block',
           margin: 0,

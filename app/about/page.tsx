@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import Button from '@/components/ui/Button';
+
+const DISCORD_INVITE_URL =
+  process.env.NEXT_PUBLIC_DISCORD_INVITE_URL?.trim() || '/contact';
+const hasDirectDiscordLink = DISCORD_INVITE_URL.startsWith('http');
 
 export const metadata: Metadata = {
   title: 'About Pilot Car Admin 2026 | Built by a Driver, for Drivers',
@@ -132,61 +137,92 @@ export default function AboutPage() {
                   <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
                     Built With the Community in Mind
                   </h2>
-                  <p className="mt-2 text-base sm:text-lg text-gray-600">
-                    Road-tested ideas from drivers guide where the app goes next.
+                  <p className="mt-2 text-base sm:text-lg text-gray-600 max-w-3xl">
+                    Pilot Car Admin will continue to evolve based on feedback from real pilot car drivers using the software every day.
                   </p>
                 </div>
                 <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 border border-emerald-100">
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
                   <span className="text-xs font-semibold tracking-[0.16em] text-emerald-700 uppercase">
-                    Active Development
+                    Community Driven
                   </span>
                 </div>
               </div>
-              <div className="grid gap-6 md:grid-cols-3">
-                <div className="rounded-2xl bg-white/80 border border-gray-100 p-5 shadow-sm">
-                  <div className="mb-3 flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 font-semibold">
-                      1
-                    </div>
-                    <p className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
-                      Route Tools
-                    </p>
-                  </div>
-                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                    Route tools to better follow runs and detours, built around how pilots actually move with a load.
-                  </p>
-                </div>
-                <div className="rounded-2xl bg-white/80 border border-gray-100 p-5 shadow-sm">
-                  <div className="mb-3 flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 font-semibold">
-                      2
-                    </div>
-                    <p className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
-                      Multi-Day Jobs
-                    </p>
-                  </div>
-                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                    Improved tools for multi-day and complex jobs so long runs are easier to price, track, and invoice.
-                  </p>
-                </div>
-                <div className="rounded-2xl bg-white/80 border border-gray-100 p-5 shadow-sm">
-                  <div className="mb-3 flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 font-semibold">
-                      3
-                    </div>
-                    <p className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
-                      Free Load Board
-                    </p>
-                  </div>
-                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                    Eventually launching a free load board if the user base grows large enough to support it.
-                  </p>
+              <div className="space-y-6">
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                  The goal is to build practical tools that make running pilot car jobs and managing the business side easier.
+                </p>
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                  Drivers are encouraged to share ideas, request features, and be part of the development process by joining our Discord community or contacting us directly by email.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href={DISCORD_INVITE_URL}
+                    target={hasDirectDiscordLink ? '_blank' : undefined}
+                    rel={hasDirectDiscordLink ? 'noopener noreferrer' : undefined}
+                    className="inline-flex items-center justify-center rounded-xl bg-primary-700 text-white px-5 py-2.5 font-semibold hover:bg-primary-800 transition-colors"
+                  >
+                    Join the Discord Community
+                  </Link>
+                  <Link
+                    href="mailto:siteopsstudio@gmail.com"
+                    className="inline-flex items-center justify-center rounded-xl border border-primary-200 bg-white text-primary-800 px-5 py-2.5 font-semibold hover:bg-primary-50 transition-colors"
+                  >
+                    Email the Team
+                  </Link>
                 </div>
               </div>
-              <p className="mt-6 text-base sm:text-lg text-gray-700 leading-relaxed">
-                The goal is to keep building software that actually helps pilot car drivers run their business more easily.
-              </p>
+
+              <div className="mt-8 grid gap-6 lg:grid-cols-2">
+                <div className="rounded-2xl bg-white/85 border border-gray-100 p-6 shadow-sm">
+                  <div className="mb-4 flex items-center gap-2">
+                    <div className="h-8 w-8 rounded-xl bg-primary-100 flex items-center justify-center text-primary-700 font-semibold">
+                      R
+                    </div>
+                    <p className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
+                      Current Roadmap
+                    </p>
+                  </div>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                    The immediate focus is completing development of the mobile app and launching the first public beta. This is expected within the next two months.
+                  </p>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                    After the mobile release, development will shift toward building an optional web-based version of Pilot Car Admin for drivers who prefer cloud access and syncing across devices.
+                  </p>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                    The online version will initially launch in beta. Because cloud infrastructure and database services have ongoing operating costs, long-term availability of the online version will depend on user adoption and demand.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl bg-slate-900 text-slate-50 p-6 shadow-lg border border-slate-800 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(56,189,248,0.18),transparent_55%)]" />
+                  <div className="relative">
+                    <div className="mb-4 flex items-center gap-2">
+                      <div className="h-8 w-8 rounded-xl bg-slate-800 flex items-center justify-center text-sky-300 font-semibold">
+                        V
+                      </div>
+                      <p className="text-sm font-semibold text-slate-100 uppercase tracking-wide">
+                        Long-Term Vision
+                      </p>
+                    </div>
+                    <p className="text-sm sm:text-base text-slate-100/90 leading-relaxed mb-3">
+                      As the Pilot Car Admin community grows, the goal is to continue expanding the software into a complete set of tools designed specifically for pilot car drivers.
+                    </p>
+                    <p className="text-sm sm:text-base text-slate-100/90 leading-relaxed mb-3">
+                      Future plans include custom route guidance tools to help drivers better follow runs, manage detours, and stay organized during complex or multi-day jobs.
+                    </p>
+                    <p className="text-sm sm:text-base text-slate-100/90 leading-relaxed mb-3">
+                      The vision is to provide practical features that support real-world pilot car operations, not generic navigation or logistics tools.
+                    </p>
+                    <p className="text-sm sm:text-base text-slate-100/90 leading-relaxed mb-3">
+                      If adoption continues to grow, we would also like to launch a free load board for pilot car drivers to help connect drivers with available work and reduce time spent searching for loads.
+                    </p>
+                    <p className="text-sm sm:text-base text-slate-100/90 leading-relaxed">
+                      The long-term objective is to build a simple ecosystem for invoicing, job tracking, routing, and business operations in one place, shaped by feedback from drivers using Pilot Car Admin every day.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

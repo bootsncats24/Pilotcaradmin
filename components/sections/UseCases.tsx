@@ -47,10 +47,10 @@ const useCases: UseCase[] = [
   },
   {
     id: 'multi-device',
-    title: 'Desktop and Mobile, Always in Sync',
-    description: 'Start a job on your phone, finish invoicing on your desktop. Your data stays in sync across all devices—no cloud accounts required.',
+    title: 'Desktop + Mobile Sync (Coming Soon)',
+    description: 'Start a job on your phone and finish invoicing on your desktop. Cross-device sync is rolling out with the mobile app release—no cloud accounts required.',
     features: [
-      'Use the mobile app on the road, desktop at home',
+      'Use the mobile app on the road, desktop at home (mobile app coming soon)',
       'Secure bidirectional sync between devices',
       'Works fully offline on both platforms',
       'No cloud dependency—your data stays local',

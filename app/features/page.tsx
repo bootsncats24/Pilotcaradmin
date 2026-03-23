@@ -1,12 +1,14 @@
 import Card from '@/components/ui/Card';
 import Image from 'next/image';
 import imageMetadata from '@/lib/image-metadata.json';
+import { FEATURE_IMAGE_KEYS } from '@/lib/all-features-page';
 
 interface FeatureDetail {
   title: string;
   description: string;
   features: string[];
   imageSlug?: string; // Slug to look up image in homeFeatures
+  badge?: string;
 }
 
 const featureDetails: FeatureDetail[] = [
@@ -23,20 +25,6 @@ const featureDetails: FeatureDetail[] = [
       'Search and filter invoices',
     ],
     imageSlug: 'invoice',
-  },
-  {
-    title: 'Customer & Destination Management',
-    description:
-      'Organize customer information and track frequently used destinations with ease.',
-    features: [
-      'Store customer details (address, phone, email, tax ID)',
-      'Multiple phone numbers, emails, and addresses per customer',
-      'Track destinations with addresses and distances',
-      'Quick access to frequently used locations',
-      'Customer and destination search',
-      'CSV import for bulk customer creation',
-    ],
-    imageSlug: undefined, // No screenshot available
   },
   {
     title: 'Expense Tracking',
@@ -82,19 +70,6 @@ const featureDetails: FeatureDetail[] = [
     imageSlug: 'calendar',
   },
   {
-    title: 'Financial Reports',
-    description:
-      'Generate comprehensive financial reports for your business and tax preparation.',
-    features: [
-      'Profit & Loss reports',
-      'Expense by category summaries',
-      'Tax summary reports',
-      'Date range filtering',
-      'Export capabilities',
-    ],
-    imageSlug: undefined, // No screenshot available
-  },
-  {
     title: 'Offline Operation',
     description:
       'Works completely offline. No internet connection required for day-to-day operations.',
@@ -104,7 +79,8 @@ const featureDetails: FeatureDetail[] = [
       'Secure data on your device',
       'Fast performance',
     ],
-    imageSlug: undefined, // No screenshot available
+    imageSlug: 'offline',
+    badge: 'Offline',
   },
   {
     title: 'Mobile Sync',
@@ -116,7 +92,7 @@ const featureDetails: FeatureDetail[] = [
       'Secure data transfer',
       'Conflict resolution',
     ],
-    imageSlug: undefined, // No screenshot available
+    imageSlug: FEATURE_IMAGE_KEYS.mobileSync,
   },
 ];
 
@@ -144,7 +120,8 @@ export default function FeaturesPage() {
           <div className="space-y-16">
             {featureDetails.map((feature, index) => {
               const imageFilename = feature.imageSlug 
-                ? (imageMetadata.homeFeatures as Record<string, string>)[feature.imageSlug]
+                ? (imageMetadata.features as Record<string, string | null>)[feature.imageSlug] ||
+                  (imageMetadata.homeFeatures as Record<string, string | null>)[feature.imageSlug]
                 : null;
               const imageUrl = imageFilename 
                 ? `/images/features/${imageFilename}`
@@ -165,6 +142,11 @@ export default function FeaturesPage() {
                             className="object-contain"
                             sizes="(max-width: 1024px) 100vw, 50vw"
                           />
+                          {feature.badge && (
+                            <span className="absolute top-3 left-3 inline-flex items-center rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white uppercase tracking-wide shadow-lg">
+                              {feature.badge}
+                            </span>
+                          )}
                         </div>
                       </div>
                     ) : (
@@ -174,6 +156,11 @@ export default function FeaturesPage() {
                           <p className="text-primary-700 text-sm font-medium text-center opacity-70">
                             Screenshot coming soon
                           </p>
+                          {feature.badge && (
+                            <span className="absolute top-3 left-3 inline-flex items-center rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white uppercase tracking-wide shadow-lg">
+                              {feature.badge}
+                            </span>
+                          )}
                         </div>
                       </div>
                     )}

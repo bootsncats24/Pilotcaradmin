@@ -93,7 +93,7 @@ export default function DestinationView() {
       <div className="page-header">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
           <h1 className="page-title">Destination Details</h1>
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
             <button className="btn btn-secondary" onClick={() => navigate('/destinations')}>
               Back to Destinations
             </button>
@@ -110,7 +110,7 @@ export default function DestinationView() {
             {destination.name}
           </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+          <div className="responsive-two-col" style={{ marginBottom: '2rem' }}>
             <div>
               <h3 style={{ marginBottom: '0.75rem', color: '#555' }}>Location Information</h3>
               

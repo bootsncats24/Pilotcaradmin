@@ -1,5 +1,12 @@
 {
-  "features": {},
+  "features": {
+    "invoice": "1769447965990-invoice.png",
+    "expenses": "1770500427208-expenses.png",
+    "mileage-tracking": "1769411673360-mileage.png",
+    "calendar": "1769447988156-calendar_.png",
+    "offline": "1769447975739-expenses.png",
+    "mobile-sync": "1770692130415-Screenshot_2026-02-09_185429.png"
+  },
   "featureSections": {
     "invoice-0": "1769448157582-billingrates.png",
     "invoice-1": "1769448176887-statusmanagement.png",

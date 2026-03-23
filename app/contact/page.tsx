@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import Card from '@/components/ui/Card';
 
+const DISCORD_INVITE_URL =
+  process.env.NEXT_PUBLIC_DISCORD_INVITE_URL?.trim() || 'https://discord.gg/EJcMCTSn';
+
 export const metadata: Metadata = {
   title: 'Contact · Pilot Car Admin 2026',
   description:
@@ -42,6 +45,17 @@ export default function ContactPage() {
                 className="inline-block text-2xl sm:text-3xl font-mono text-primary-800 hover:text-primary-700 transition-colors break-all"
               >
                 siteopsstudio@gmail.com
+              </a>
+            </div>
+            <div className="mb-8">
+              <p className="text-gray-600 text-sm mb-4">Join our Discord community:</p>
+              <a
+                href={DISCORD_INVITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl bg-primary-700 text-white px-6 py-3 font-semibold hover:bg-primary-800 transition-colors"
+              >
+                Join Discord
               </a>
             </div>
             <p className="text-gray-600 text-sm">

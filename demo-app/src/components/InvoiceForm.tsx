@@ -1415,7 +1415,7 @@ export default function InvoiceForm({ invoice, onSave, onCancel }: InvoiceFormPr
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+            <div className="responsive-two-col" style={{ marginBottom: '2rem' }}>
               <div>
                 <h3>Bill To:</h3>
                 {(() => {

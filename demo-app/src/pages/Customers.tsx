@@ -30,10 +30,10 @@ export default function Customers() {
   }
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h1 style={{ color: '#111827' }}>Customers</h1>
-        <button onClick={() => alert('Add customer feature coming soon')}>
+    <>
+      <div className="page-header">
+        <h1 className="page-title">Customers</h1>
+        <button className="btn btn-primary" onClick={() => alert('Add customer feature coming soon')}>
           + Add Customer
         </button>
       </div>
@@ -42,28 +42,30 @@ export default function Customers() {
         {customers.length === 0 ? (
           <p style={{ color: '#6b7280' }}>No customers yet</p>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Address</th>
-              </tr>
-            </thead>
-            <tbody>
-              {customers.map((customer: any) => (
-                <tr key={customer.id}>
-                  <td style={{ fontWeight: 500 }}>{customer.name}</td>
-                  <td>{customer.phone || '-'}</td>
-                  <td>{customer.email || '-'}</td>
-                  <td>{customer.address || '-'}</td>
+          <div className="table-wrapper">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Address</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {customers.map((customer: any) => (
+                  <tr key={customer.id}>
+                    <td data-label="Name" style={{ fontWeight: 500, overflowWrap: 'anywhere' }}>{customer.name}</td>
+                    <td data-label="Phone" style={{ overflowWrap: 'anywhere' }}>{customer.phone || '-'}</td>
+                    <td data-label="Email" style={{ overflowWrap: 'anywhere' }}>{customer.email || '-'}</td>
+                    <td data-label="Address" style={{ overflowWrap: 'anywhere' }}>{customer.address || '-'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
-    </div>
+    </>
   );
 }

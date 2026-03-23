@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { getFeatureBySlug } from '@/lib/features';
+import { ALL_FEATURES_PAGE_ITEMS } from '@/lib/all-features-page';
 
 interface ImageMetadata {
   features: Record<string, string | null>;
@@ -22,7 +23,6 @@ interface ImageList {
 const FEATURE_SLUGS = ['invoice', 'expenses', 'mileage-tracking', 'calendar', 'jobs', 'offline', 'sync', 'security'];
 const USE_CASE_IDS = ['solo', 'small-fleet', 'large-operations', 'contractors'];
 const HOME_FEATURE_SLUGS = ['mileage-tracking', 'invoice', 'jobs', 'offline', 'expenses', 'sync', 'security'];
-
 export default function AdminPanel() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [password, setPassword] = useState('');
@@ -40,7 +40,7 @@ export default function AdminPanel() {
     heroContent: null,
     testimonials: {},
   });
-  const [selectedTab, setSelectedTab] = useState<'hero' | 'home-features' | 'feature-sections' | 'use-cases' | 'testimonials'>('hero');
+  const [selectedTab, setSelectedTab] = useState<'hero' | 'home-features' | 'all-features' | 'feature-sections' | 'use-cases' | 'testimonials'>('hero');
   const [uploading, setUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<string>('invoice');
@@ -218,6 +218,11 @@ export default function AdminPanel() {
             newMetadata.featureSections[key] = null;
           }
         });
+        Object.keys(newMetadata.features).forEach((key) => {
+          if (newMetadata.features[key] === filename) {
+            newMetadata.features[key] = null;
+          }
+        });
         Object.keys(newMetadata.homeFeatures).forEach((key) => {
           if (newMetadata.homeFeatures[key] === filename) {
             newMetadata.homeFeatures[key] = null;
@@ -258,7 +263,7 @@ export default function AdminPanel() {
     }
   };
 
-  const assignImage = (key: string, filename: string | null, section: 'hero' | 'heroContent' | 'featureSections' | 'homeFeatures' | 'useCases' | 'testimonials') => {
+  const assignImage = (key: string, filename: string | null, section: 'hero' | 'heroContent' | 'features' | 'featureSections' | 'homeFeatures' | 'useCases' | 'testimonials') => {
     // Update local state immediately for instant feedback
     const newMetadata = { ...metadata };
 
@@ -266,6 +271,8 @@ export default function AdminPanel() {
       newMetadata.hero = filename;
     } else if (section === 'heroContent') {
       newMetadata.heroContent = filename;
+    } else if (section === 'features') {
+      newMetadata.features[key] = filename || null;
     } else if (section === 'featureSections') {
       newMetadata.featureSections[key] = filename || null;
     } else if (section === 'homeFeatures') {
@@ -402,6 +409,7 @@ export default function AdminPanel() {
           {([
             { id: 'hero', label: 'Hero Image' },
             { id: 'home-features', label: 'Home Page Features' },
+            { id: 'all-features', label: 'All Features Page' },
             { id: 'feature-sections', label: 'Feature Page Sections' },
             { id: 'use-cases', label: 'Use Cases' },
             { id: 'testimonials', label: 'Testimonials' },
@@ -817,6 +825,66 @@ export default function AdminPanel() {
               </div>
             );
           })()}
+
+          {selectedTab === 'all-features' && (
+            <div>
+              <h2 className="text-xl font-semibold mb-4">All Features Page Images</h2>
+              <p className="text-sm text-gray-600 mb-4">
+                These images are used on the main <code>/features</code> page. Assign one image per feature card.
+              </p>
+              <div className="space-y-6">
+                {ALL_FEATURES_PAGE_ITEMS.map((slot) => (
+                  <div key={slot.key} className="border-b pb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {slot.title}
+                    </label>
+                    <div className="mb-4">
+                      <button
+                        onClick={() => assignImage(slot.key, null, 'features')}
+                        className={`px-4 py-2 rounded-md border-2 ${
+                          !metadata.features[slot.key]
+                            ? 'bg-primary-800 text-white border-primary-800'
+                            : 'bg-white text-gray-700 border-gray-300 hover:border-primary-800'
+                        }`}
+                      >
+                        None
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-h-64 overflow-y-auto mb-4">
+                      {images.features.map((img) => (
+                        <div
+                          key={img}
+                          onClick={() => assignImage(slot.key, img, 'features')}
+                          className={`cursor-pointer border-2 rounded-lg overflow-hidden transition-all ${
+                            metadata.features[slot.key] === img
+                              ? 'border-primary-800 ring-2 ring-primary-800'
+                              : 'border-gray-300 hover:border-primary-600'
+                          }`}
+                        >
+                          <img
+                            src={`/images/features/${img}`}
+                            alt={img}
+                            className="w-full h-24 object-contain bg-gray-100"
+                          />
+                          <div className="p-1 text-xs text-gray-600 truncate">{img}</div>
+                        </div>
+                      ))}
+                    </div>
+                    {metadata.features[slot.key] && (
+                      <div className="mt-2">
+                        <p className="text-sm text-gray-600 mb-2">Selected: {metadata.features[slot.key]}</p>
+                        <img
+                          src={`/images/features/${metadata.features[slot.key]}`}
+                          alt={slot.title}
+                          className="max-w-md h-auto rounded"
+                        />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {selectedTab === 'use-cases' && (
             <div>

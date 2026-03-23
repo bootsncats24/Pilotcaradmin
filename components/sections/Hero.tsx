@@ -109,7 +109,7 @@ export default async function Hero() {
             Professional invoicing and expense tracking designed from real pilot car work.
             <br className="hidden sm:block" />
             <span className="text-white font-semibold">
-              Works offline, syncs with mobile, and keeps you paid.
+              Works offline now, with mobile sync coming soon.
             </span>
           </p>
 
