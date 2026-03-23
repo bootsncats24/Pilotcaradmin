@@ -1,5 +1,5 @@
+# Repo root IS the marketing site (Pilotcaradmin). Do not set base — there is no marketing-website/ subfolder on Netlify.
 [build]
-  base = "marketing-website"
   command = "npm run build"
   publish = ".next"
 [[plugins]]
