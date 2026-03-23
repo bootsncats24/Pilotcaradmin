@@ -178,9 +178,6 @@ export default function Navbar() {
             <Button href="/pricing" variant="primary" className="text-sm px-4 py-2 whitespace-nowrap">
               View Pricing
             </Button>
-            <Button href="/pricing" variant="secondary" className="bg-primary-800 text-white hover:bg-primary-700 text-sm px-4 py-2 whitespace-nowrap">
-              Buy Now & Save
-            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -264,12 +261,9 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-            <div className="pt-2 space-y-2">
+            <div className="pt-2">
               <Button href="/pricing" variant="primary" className="w-full">
                 View Pricing
-              </Button>
-              <Button href="/pricing" variant="secondary" className="w-full bg-primary-800 text-white hover:bg-primary-700">
-                Buy Now & Save
               </Button>
             </div>
           </div>

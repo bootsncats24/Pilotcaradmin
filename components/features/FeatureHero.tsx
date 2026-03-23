@@ -45,9 +45,6 @@ export default function FeatureHero({ feature }: FeatureHeroProps) {
             <Button href="/pricing" variant="primary" className="bg-white text-primary-800 hover:bg-primary-50 text-lg px-8 py-4">
               View Pricing
             </Button>
-            <Button href="/pricing" variant="primary" className="bg-primary-900 border-2 border-white text-white hover:bg-primary-800 hover:border-white text-lg px-8 py-4 font-bold shadow-xl">
-              Buy Now & Save
-            </Button>
           </div>
 
           <p className="text-sm text-primary-200 animate-fade-in" style={{ animationDelay: '0.6s' }}>
