@@ -15,7 +15,7 @@ export default function ExpenseByCategoryReport({ data, dateRange }: ExpenseByCa
       <p>Period: {dateRange.startDate} to {dateRange.endDate}</p>
 
       <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
-        <div style={{ fontSize: '2rem', fontWeight: 'bold', textAlign: 'center' }}>
+        <div className="demo-report-hero-total">
           Total Expenses: ${total.toFixed(2)}
         </div>
       </div>
@@ -52,15 +52,17 @@ export default function ExpenseByCategoryReport({ data, dateRange }: ExpenseByCa
                 <td data-label="Average">${average.toFixed(2)}</td>
                 <td data-label="% of Total">{percentage.toFixed(1)}%</td>
                 <td data-label="Visual">
-                  <div
-                    style={{
-                      width: `${percentage}%`,
-                      minWidth: '20px',
-                      height: '20px',
-                      backgroundColor: cat.category_color || '#95a5a6',
-                      borderRadius: '4px',
-                    }}
-                  />
+                  <div className="demo-report-visual-track">
+                    <div
+                      style={{
+                        width: `${Math.min(100, percentage)}%`,
+                        minWidth: percentage > 0 ? '4px' : 0,
+                        height: '20px',
+                        backgroundColor: cat.category_color || '#95a5a6',
+                        borderRadius: '4px',
+                      }}
+                    />
+                  </div>
                 </td>
               </tr>
             );

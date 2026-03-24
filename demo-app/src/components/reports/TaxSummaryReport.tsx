@@ -12,27 +12,27 @@ export default function TaxSummaryReport({ data }: TaxSummaryReportProps) {
         <h2>Tax Summary for {data.year}</h2>
 
         <div className="demo-stats-grid-3" style={{ marginTop: '2rem' }}>
-          <div style={{ textAlign: 'center' }}>
+          <div className="demo-report-stat-cell">
             <h3>Total Income</h3>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#27ae60' }}>
+            <div className="demo-report-stat-value" style={{ color: '#27ae60' }}>
               ${data.total_income.toFixed(2)}
             </div>
           </div>
 
-          <div style={{ textAlign: 'center' }}>
+          <div className="demo-report-stat-cell">
             <h3>Total Deductions</h3>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#e74c3c' }}>
+            <div className="demo-report-stat-value" style={{ color: '#e74c3c' }}>
               ${(data.total_expenses + (data.mileage_deduction || 0)).toFixed(2)}
             </div>
-            <div style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>
+            <div className="demo-report-stat-note">
               Expenses: ${data.total_expenses.toFixed(2)}<br />
               Mileage: ${(data.mileage_deduction || 0).toFixed(2)}
             </div>
           </div>
 
-          <div style={{ textAlign: 'center' }}>
+          <div className="demo-report-stat-cell">
             <h3>Net Profit</h3>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#3498db' }}>
+            <div className="demo-report-stat-value" style={{ color: '#3498db' }}>
               ${data.net_profit.toFixed(2)}
             </div>
           </div>

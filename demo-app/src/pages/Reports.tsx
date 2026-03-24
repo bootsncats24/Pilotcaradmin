@@ -59,7 +59,7 @@ export default function Reports() {
       </div>
 
       <div className="card" style={{ marginBottom: '1.5rem' }}>
-        <div className="demo-inline-filter-row" style={{ alignItems: 'center' }}>
+        <div className="demo-reports-type-row">
           <div>
             <strong>Report Type:</strong>
           </div>

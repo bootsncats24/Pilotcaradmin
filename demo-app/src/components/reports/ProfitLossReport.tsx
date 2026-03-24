@@ -52,38 +52,31 @@ export default function ProfitLossReport({ data, dateRange }: ProfitLossReportPr
       </div>
 
       <div className="demo-stats-grid-3">
-        <div style={{ textAlign: 'center', padding: '1rem', backgroundColor: '#d4edda', borderRadius: '4px' }}>
-          <div style={{ fontSize: '0.875rem', color: '#155724', marginBottom: '0.5rem' }}>Income</div>
-          <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#155724' }}>
+        <div className="demo-report-stat-cell" style={{ backgroundColor: '#d4edda' }}>
+          <h3 style={{ color: '#155724' }}>Income</h3>
+          <div className="demo-report-stat-value" style={{ color: '#155724' }}>
             ${data.income.total.toFixed(2)}
           </div>
         </div>
 
-        <div style={{ textAlign: 'center', padding: '1rem', backgroundColor: '#fff3cd', borderRadius: '4px' }}>
-          <div style={{ fontSize: '0.875rem', color: '#856404', marginBottom: '0.5rem' }}>Expenses</div>
-          <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#856404' }}>
+        <div className="demo-report-stat-cell" style={{ backgroundColor: '#fff3cd' }}>
+          <h3 style={{ color: '#856404' }}>Expenses</h3>
+          <div className="demo-report-stat-value" style={{ color: '#856404' }}>
             ${data.expenses.total.toFixed(2)}
           </div>
         </div>
 
         <div
+          className="demo-report-stat-cell"
           style={{
-            textAlign: 'center',
-            padding: '1rem',
             backgroundColor: data.net_profit >= 0 ? '#d4edda' : '#f8d7da',
-            borderRadius: '4px',
           }}
         >
+          <h3 style={{ color: data.net_profit >= 0 ? '#155724' : '#721c24' }}>Net Profit</h3>
           <div
-            style={{
-              fontSize: '0.875rem',
-              color: data.net_profit >= 0 ? '#155724' : '#721c24',
-              marginBottom: '0.5rem',
-            }}
+            className="demo-report-stat-value"
+            style={{ color: data.net_profit >= 0 ? '#155724' : '#721c24' }}
           >
-            Net Profit
-          </div>
-          <div style={{ fontSize: '2rem', fontWeight: 'bold', color: data.net_profit >= 0 ? '#155724' : '#721c24' }}>
             ${data.net_profit.toFixed(2)}
           </div>
         </div>
