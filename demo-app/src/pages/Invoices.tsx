@@ -109,11 +109,11 @@ export default function Invoices() {
               <tbody>
                 {invoices.map((invoice: any) => (
                   <tr key={invoice.id} style={{ cursor: 'pointer' }} onClick={() => handleView(invoice.id)}>
-                    <td style={{ fontWeight: 500 }}>{invoice.invoice_number}</td>
-                    <td>{invoice.customer?.name || 'Unknown'}</td>
-                    <td>{formatLocalDate(invoice.date)}</td>
-                    <td>{invoice.due_date ? formatLocalDate(invoice.due_date) : '-'}</td>
-                    <td>
+                    <td data-label="Invoice #" style={{ fontWeight: 500 }}>{invoice.invoice_number}</td>
+                    <td data-label="Customer">{invoice.customer?.name || 'Unknown'}</td>
+                    <td data-label="Date">{formatLocalDate(invoice.date)}</td>
+                    <td data-label="Due Date">{invoice.due_date ? formatLocalDate(invoice.due_date) : '-'}</td>
+                    <td data-label="Status">
                       <span className={`badge badge-${invoice.status}`} style={{
                         padding: '4px 8px',
                         borderRadius: '4px',
@@ -131,8 +131,8 @@ export default function Invoices() {
                         {invoice.status}
                       </span>
                     </td>
-                    <td style={{ fontWeight: 500 }}>${invoice.total?.toLocaleString() || '0.00'}</td>
-                    <td>
+                    <td data-label="Amount" style={{ fontWeight: 500 }}>${invoice.total?.toLocaleString() || '0.00'}</td>
+                    <td data-label="Actions">
                       <button 
                         className="btn btn-small btn-secondary"
                         onClick={(e) => {

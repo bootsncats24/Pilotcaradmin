@@ -261,7 +261,7 @@ export default function Transactions() {
       />
 
       <div className="card" style={{ marginBottom: '1rem', padding: '1rem' }}>
-        <div style={{ display: 'flex', gap: '2rem' }}>
+        <div className="demo-stat-strip">
           <div>
             <strong>Total:</strong> ${totalAmount.toFixed(2)}
           </div>
@@ -288,6 +288,7 @@ export default function Transactions() {
         </div>
       ) : (
         <div className="card">
+          <div className="table-wrapper">
           <table className="table">
             <thead>
               <tr>
@@ -308,10 +309,10 @@ export default function Transactions() {
                   style={{ cursor: 'pointer' }}
                   className={openActionId === transaction.id ? 'action-dropdown-row-open' : ''}
                 >
-                  <td>{transaction.date}</td>
-                  <td>{transaction.description}</td>
-                  <td>{transaction.vendor || '-'}</td>
-                  <td>
+                  <td data-label="Date">{transaction.date}</td>
+                  <td data-label="Description">{transaction.description}</td>
+                  <td data-label="Vendor">{transaction.vendor || '-'}</td>
+                  <td data-label="Category">
                     {transaction.category_id ? (
                       <span
                         className="badge"
@@ -347,8 +348,8 @@ export default function Transactions() {
                       </span>
                     )}
                   </td>
-                  <td>${transaction.amount.toFixed(2)}</td>
-                  <td>
+                  <td data-label="Amount">${transaction.amount.toFixed(2)}</td>
+                  <td data-label="Type">
                     <span 
                       className={`badge ${transaction.is_business ? 'badge-paid' : 'badge-cancelled'}`}
                       style={{
@@ -364,7 +365,8 @@ export default function Transactions() {
                       {transaction.is_business ? 'Business' : 'Personal'}
                     </span>
                   </td>
-                  <td 
+                  <td
+                    data-label="Actions"
                     onClick={(e) => e.stopPropagation()}
                     style={{ position: 'relative', overflow: 'visible' }}
                   >
@@ -444,6 +446,7 @@ export default function Transactions() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </>

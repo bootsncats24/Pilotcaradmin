@@ -39,9 +39,9 @@ export default function ProfitLossReport({ data, dateRange }: ProfitLossReportPr
 
   return (
     <div className="card">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div className="demo-report-card-header">
         <h2>Profit & Loss Statement</h2>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="demo-button-group">
           <button className="btn btn-secondary btn-small" onClick={handleExportCSV}>
             Export CSV
           </button>
@@ -51,7 +51,7 @@ export default function ProfitLossReport({ data, dateRange }: ProfitLossReportPr
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+      <div className="demo-stats-grid-3">
         <div style={{ textAlign: 'center', padding: '1rem', backgroundColor: '#d4edda', borderRadius: '4px' }}>
           <div style={{ fontSize: '0.875rem', color: '#155724', marginBottom: '0.5rem' }}>Income</div>
           <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#155724' }}>
@@ -90,6 +90,7 @@ export default function ProfitLossReport({ data, dateRange }: ProfitLossReportPr
       </div>
 
       <h3>Expenses by Category</h3>
+      <div className="table-wrapper">
       <table className="table">
         <thead>
           <tr>
@@ -102,7 +103,7 @@ export default function ProfitLossReport({ data, dateRange }: ProfitLossReportPr
         <tbody>
           {data.expenses.by_category.map((cat) => (
             <tr key={cat.category_id}>
-              <td>
+              <td data-label="Category">
                 <span
                   className="badge"
                   style={{ backgroundColor: cat.category_color || '#95a5a6' }}
@@ -110,19 +111,20 @@ export default function ProfitLossReport({ data, dateRange }: ProfitLossReportPr
                   {cat.category_name}
                 </span>
               </td>
-              <td>{cat.transaction_count}</td>
-              <td>${cat.total.toFixed(2)}</td>
-              <td>{((cat.total / data.expenses.total) * 100).toFixed(1)}%</td>
+              <td data-label="Transactions">{cat.transaction_count}</td>
+              <td data-label="Total">${cat.total.toFixed(2)}</td>
+              <td data-label="% of Expenses">{((cat.total / data.expenses.total) * 100).toFixed(1)}%</td>
             </tr>
           ))}
           <tr style={{ fontWeight: 'bold', borderTop: '2px solid #000' }}>
-            <td>Total</td>
-            <td>{data.expenses.by_category.reduce((sum, c) => sum + c.transaction_count, 0)}</td>
-            <td>${data.expenses.total.toFixed(2)}</td>
-            <td>100%</td>
+            <td data-label="Category">Total</td>
+            <td data-label="Transactions">{data.expenses.by_category.reduce((sum, c) => sum + c.transaction_count, 0)}</td>
+            <td data-label="Total">${data.expenses.total.toFixed(2)}</td>
+            <td data-label="% of Expenses">100%</td>
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

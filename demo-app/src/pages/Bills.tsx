@@ -229,21 +229,21 @@ export default function Bills() {
             <tbody>
               {filteredBills.map((bill) => (
                 <tr key={bill.id} style={{ backgroundColor: isOverdue(bill.due_date) && bill.status === 'active' ? '#ffebee' : 'inherit' }}>
-                  <td>
+                  <td data-label="Name">
                     <strong>{bill.name}</strong>
                     {bill.description && (
                       <div style={{ fontSize: '0.85rem', color: '#7f8c8d' }}>{bill.description}</div>
                     )}
                   </td>
-                  <td>{bill.vendor || '-'}</td>
-                  <td>${bill.amount.toFixed(2)}</td>
-                  <td>
+                  <td data-label="Vendor">{bill.vendor || '-'}</td>
+                  <td data-label="Amount">${bill.amount.toFixed(2)}</td>
+                  <td data-label="Due Date">
                     {formatLocalDate(bill.due_date)}
                     {isOverdue(bill.due_date) && bill.status === 'active' && (
                       <span className="badge badge-overdue" style={{ marginLeft: '0.5rem' }}>Overdue</span>
                     )}
                   </td>
-                  <td>
+                  <td data-label="Recurring">
                     {bill.is_recurring ? (
                       <span className="badge badge-paid">
                         {bill.recurrence_type === 'daily' ? 'Daily' :
@@ -256,12 +256,12 @@ export default function Bills() {
                       <span style={{ color: '#95a5a6' }}>-</span>
                     )}
                   </td>
-                  <td>
+                  <td data-label="Status">
                     <span className={`badge badge-${bill.status === 'active' ? 'sent' : bill.status === 'paid' ? 'paid' : 'cancelled'}`}>
                       {bill.status.charAt(0).toUpperCase() + bill.status.slice(1)}
                     </span>
                   </td>
-                  <td>
+                  <td data-label="Actions">
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                       {bill.status === 'active' && (
                         <button

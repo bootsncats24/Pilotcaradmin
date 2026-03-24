@@ -163,6 +163,7 @@ export default function Destinations() {
         </div>
       ) : (
         <div className="card">
+          <div className="table-wrapper">
           <table className="table">
             <thead>
               <tr>
@@ -175,13 +176,13 @@ export default function Destinations() {
             <tbody>
               {filteredDestinations.map((destination) => (
                 <tr key={destination.id}>
-                  <td>
+                  <td data-label="Name">
                     <strong>{destination.name}</strong>
                   </td>
-                  <td>{destination.address || '-'}</td>
-                  <td>
+                  <td data-label="Address">{destination.address || '-'}</td>
+                  <td data-label="Notes">
                     {destination.notes ? (
-                      <div style={{ maxWidth: '300px' }}>
+                      <div style={{ maxWidth: '100%' }}>
                         {destination.notes.length > 100 ? (
                           <span title={destination.notes}>
                             {destination.notes.substring(0, 100)}...
@@ -194,7 +195,7 @@ export default function Destinations() {
                       '-'
                     )}
                   </td>
-                  <td>
+                  <td data-label="Actions">
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                       <button
                         className="btn btn-small btn-primary"
@@ -220,6 +221,7 @@ export default function Destinations() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </>

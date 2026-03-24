@@ -181,6 +181,7 @@ export default function Categories() {
         </div>
       ) : (
         <div className="card">
+          <div className="table-wrapper">
           <table className="table">
             <thead>
               <tr>
@@ -194,7 +195,7 @@ export default function Categories() {
             <tbody>
               {categories.map((category) => (
                 <tr key={category.id}>
-                  <td>
+                  <td data-label="Color">
                     <div
                       style={{
                         width: '30px',
@@ -204,15 +205,15 @@ export default function Categories() {
                       }}
                     />
                   </td>
-                  <td><strong>{category.name}</strong></td>
-                  <td>{category.irs_category || '-'}</td>
-                  <td>
+                  <td data-label="Name"><strong>{category.name}</strong></td>
+                  <td data-label="IRS Category">{category.irs_category || '-'}</td>
+                  <td data-label="Type">
                     <span className={`badge ${category.is_system ? 'badge-sent' : 'badge-draft'}`}>
                       {category.is_system ? 'System' : 'Custom'}
                     </span>
                   </td>
-                  <td>
-                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <td data-label="Actions">
+                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                       <button
                         className="btn btn-small btn-secondary"
                         onClick={() => handleEdit(category)}
@@ -233,6 +234,7 @@ export default function Categories() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </>

@@ -40,8 +40,8 @@ export default function TransactionFilters({ filters, categories, onChange }: Tr
 
   return (
     <div className="card" style={{ marginBottom: '1rem' }}>
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'flex-end' }}>
-        <div className="form-group" style={{ marginBottom: 0, minWidth: '200px' }}>
+      <div className="demo-filter-grid">
+        <div className="form-group">
           <label>Search</label>
           <input
             type="text"
@@ -52,7 +52,7 @@ export default function TransactionFilters({ filters, categories, onChange }: Tr
           />
         </div>
 
-        <div className="form-group" style={{ marginBottom: 0, minWidth: '150px' }}>
+        <div className="form-group">
           <label>Start Date</label>
           <input
             type="date"
@@ -62,7 +62,7 @@ export default function TransactionFilters({ filters, categories, onChange }: Tr
           />
         </div>
 
-        <div className="form-group" style={{ marginBottom: 0, minWidth: '150px' }}>
+        <div className="form-group">
           <label>End Date</label>
           <input
             type="date"
@@ -72,7 +72,7 @@ export default function TransactionFilters({ filters, categories, onChange }: Tr
           />
         </div>
 
-        <div className="form-group" style={{ marginBottom: 0, minWidth: '150px' }}>
+        <div className="form-group">
           <label>Category</label>
           <select
             name="categoryId"
@@ -88,7 +88,7 @@ export default function TransactionFilters({ filters, categories, onChange }: Tr
           </select>
         </div>
 
-        <div className="form-group" style={{ marginBottom: 0, minWidth: '120px' }}>
+        <div className="form-group">
           <label>Type</label>
           <select
             name="isBusiness"
@@ -101,7 +101,7 @@ export default function TransactionFilters({ filters, categories, onChange }: Tr
           </select>
         </div>
 
-        <div className="form-group" style={{ marginBottom: 0, minWidth: '180px' }}>
+        <div className="form-group">
           <label>Sort By</label>
           <select
             name="sortBy"

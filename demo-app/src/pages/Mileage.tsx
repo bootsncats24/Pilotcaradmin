@@ -155,7 +155,7 @@ export default function Mileage() {
     <>
       <div className="page-header">
         <h1 className="page-title">Mileage Tracking</h1>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="demo-button-group">
           <button
             className={`btn ${view === 'entries' ? 'btn-primary' : 'btn-secondary'}`}
             onClick={() => setView('entries')}
@@ -179,8 +179,8 @@ export default function Mileage() {
 
       {view === 'entries' && (
         <>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div className="demo-mileage-toolbar">
+            <div className="demo-button-group">
               <button className="btn btn-primary" onClick={handleNewEntry}>
                 New Mileage Entry
               </button>
@@ -189,7 +189,7 @@ export default function Mileage() {
               </button>
             </div>
 
-            <div style={{ display: 'flex', gap: '1rem' }}>
+            <div className="demo-button-group" style={{ gap: '1rem' }}>
               <select
                 value={filters.vehicleId || ''}
                 onChange={(e) => setFilters({ ...filters, vehicleId: e.target.value ? parseInt(e.target.value) : undefined })}
@@ -216,7 +216,7 @@ export default function Mileage() {
           </div>
 
           <div className="card" style={{ marginBottom: '1rem', padding: '1rem' }}>
-            <div style={{ display: 'flex', gap: '2rem' }}>
+            <div className="demo-stat-strip">
               <div><strong>Total Miles:</strong> {totalMiles.toFixed(1)}</div>
               <div><strong>Business Miles:</strong> {businessMiles.toFixed(1)}</div>
               <div><strong>IRS Rate:</strong> ${mileageRate}/mile</div>
@@ -235,6 +235,7 @@ export default function Mileage() {
             </div>
           ) : (
             <div className="card">
+              <div className="table-wrapper">
               <table className="table">
                 <thead>
                   <tr>
@@ -250,22 +251,22 @@ export default function Mileage() {
                 <tbody>
                   {entries.map((entry) => (
                     <tr key={entry.id}>
-                      <td>{entry.date}</td>
-                      <td>{(entry as any).vehicle_name || '-'}</td>
-                      <td>
+                      <td data-label="Date">{entry.date}</td>
+                      <td data-label="Vehicle">{(entry as any).vehicle_name || '-'}</td>
+                      <td data-label="Route">
                         {entry.start_location && entry.end_location
                           ? `${entry.start_location} → ${entry.end_location}`
                           : '-'}
                       </td>
-                      <td><strong>{entry.miles.toFixed(1)}</strong></td>
-                      <td>
+                      <td data-label="Miles"><strong>{entry.miles.toFixed(1)}</strong></td>
+                      <td data-label="Type">
                         <span className={`badge ${entry.is_business ? 'badge-paid' : 'badge-cancelled'}`}>
                           {entry.is_business ? 'Business' : 'Personal'}
                         </span>
                       </td>
-                      <td>{entry.purpose || '-'}</td>
-                      <td>
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <td data-label="Purpose">{entry.purpose || '-'}</td>
+                      <td data-label="Actions">
+                        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                           <button
                             className="btn btn-small btn-secondary"
                             onClick={() => handleEditEntry(entry)}
@@ -284,6 +285,7 @@ export default function Mileage() {
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           )}
         </>
@@ -306,6 +308,7 @@ export default function Mileage() {
             </div>
           ) : (
             <div className="card">
+              <div className="table-wrapper">
               <table className="table">
                 <thead>
                   <tr>
@@ -320,19 +323,19 @@ export default function Mileage() {
                 <tbody>
                   {vehicles.map((vehicle) => (
                     <tr key={vehicle.id}>
-                      <td><strong>{vehicle.name}</strong></td>
-                      <td>
+                      <td data-label="Name"><strong>{vehicle.name}</strong></td>
+                      <td data-label="Make/Model">
                         {vehicle.make && vehicle.model ? `${vehicle.make} ${vehicle.model}` : '-'}
                       </td>
-                      <td>{vehicle.year || '-'}</td>
-                      <td>{vehicle.license_plate || '-'}</td>
-                      <td>
+                      <td data-label="Year">{vehicle.year || '-'}</td>
+                      <td data-label="License Plate">{vehicle.license_plate || '-'}</td>
+                      <td data-label="Status">
                         <span className={`badge ${vehicle.is_active ? 'badge-paid' : 'badge-cancelled'}`}>
                           {vehicle.is_active ? 'Active' : 'Inactive'}
                         </span>
                       </td>
-                      <td>
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <td data-label="Actions">
+                        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                           <button
                             className="btn btn-small btn-secondary"
                             onClick={() => handleEditVehicle(vehicle)}
@@ -351,6 +354,7 @@ export default function Mileage() {
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           )}
         </>

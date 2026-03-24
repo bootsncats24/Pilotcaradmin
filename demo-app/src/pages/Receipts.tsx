@@ -160,7 +160,7 @@ export default function Receipts() {
       </div>
 
       <div className="card" style={{ marginBottom: '1rem' }}>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div className="demo-inline-filter-row">
           <div>
             <strong>Filter:</strong>
           </div>
@@ -195,7 +195,7 @@ export default function Receipts() {
           <p>Upload receipts to keep organized records for tax time</p>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem' }}>
+        <div className="demo-receipt-grid">
           {filteredReceipts.map((receipt) => (
             <div
               key={receipt.id}

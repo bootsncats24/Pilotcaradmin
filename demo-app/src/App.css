@@ -581,7 +581,10 @@ html, body, #root {
 @media (max-width: 768px) {
   .main-content {
     padding: 1rem;
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
     padding-bottom: calc(1rem + var(--mobile-bottom-nav-height)) !important;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -719,6 +722,233 @@ html, body, #root {
 }
 
 /* ============================================
+   Demo: mobile-friendly strips, filters, grids
+   ============================================ */
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .table-wrapper {
+    overflow-x: visible;
+  }
+}
+
+.demo-stat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: baseline;
+}
+
+.demo-filter-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.demo-filter-grid .form-group {
+  flex: 1 1 160px;
+  min-width: 0;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+.demo-filter-grid .form-group input,
+.demo-filter-grid .form-group select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.demo-filter-grid > .btn {
+  flex: 0 0 auto;
+  align-self: flex-end;
+}
+
+@media (max-width: 768px) {
+  .demo-filter-grid > .btn {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+
+.demo-inline-filter-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.demo-receipt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.demo-mileage-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.demo-mileage-toolbar > div {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .demo-mileage-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .demo-mileage-toolbar > div {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .demo-mileage-toolbar select {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+.demo-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  min-width: 0;
+}
+
+.demo-stats-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .demo-stats-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.demo-reports-date-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.demo-reports-date-row label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.demo-reports-date-row input[type='date'] {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .demo-reports-date-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .demo-reports-date-row label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .demo-reports-date-row input[type='date'] {
+    width: 100%;
+  }
+}
+
+.demo-report-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.demo-report-card-header h2 {
+  margin: 0;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* ============================================
    Responsive 2-column layout helper
    ============================================ */
 
@@ -839,11 +1069,20 @@ html, body, #root {
 @media (max-width: 768px) {
   .search-filter {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .search-filter input,
   .search-filter select {
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .search-filter label {
+    white-space: normal;
+    flex-wrap: wrap;
   }
 }
 
@@ -2071,14 +2310,20 @@ html, body, #root {
 
 /* ============================================
    GLOBAL MOBILE TABLE OPTIMIZATIONS
-   Applies to all .table instances in demo
+   Applies to all .table instances in demo (matches 768px shell breakpoint)
    ============================================ */
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .table {
     display: block;
     width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
+    box-sizing: border-box;
+  }
+
+  .table colgroup {
+    display: none;
   }
 
   .table thead {
@@ -2097,15 +2342,24 @@ html, body, #root {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     padding: 0.75rem 0.75rem 0.5rem;
     background: #ffffff;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
   }
 
   .table tbody td {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 0.75rem;
-    padding: 0.25rem 0 !important;
+    padding: 0.35rem 0 !important;
     font-size: 0.85rem;
     border-bottom: none !important;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    box-sizing: border-box;
   }
 
   .table tbody td::before {
@@ -2113,22 +2367,85 @@ html, body, #root {
     font-weight: 600;
     color: #6b7280;
     text-transform: none;
+    flex: 0 0 min(42%, 7.5rem);
+    max-width: 45%;
   }
 
-  /* Keep last cell right-aligned for numeric values */
   .table tbody td:last-child {
     justify-content: space-between;
   }
 
-  /* Some tables specify `min-width` on <col> which can force overflow.
-     The mobile table layout switches to stacked cards, so allow columns to shrink. */
   .table col {
     min-width: 0 !important;
   }
 }
 
+/* Dashboard cards use stronger table rules — force stacked layout on phones */
+@media (max-width: 768px) {
+  .dashboard-card .table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    table-layout: auto !important;
+  }
+
+  .dashboard-card .table colgroup {
+    display: none !important;
+  }
+
+  .dashboard-card .table thead {
+    display: none !important;
+  }
+
+  .dashboard-card .table tbody {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .dashboard-card .table tbody tr {
+    display: block !important;
+    margin-bottom: 0.75rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    padding: 0.75rem !important;
+    background: #ffffff !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .dashboard-card .table tbody td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 0.35rem 0 !important;
+    border: none !important;
+    text-align: left !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    box-sizing: border-box !important;
+  }
+
+  .dashboard-card .table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6b7280;
+    flex: 0 0 min(42%, 7.5rem);
+    max-width: 45%;
+  }
+
+  .dashboard-card .table tbody td:last-child,
+  .dashboard-card .table thead th:last-child {
+    text-align: left !important;
+  }
+}
+
 /* Invoice header layout tweaks on mobile */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   #invoice-print > div:first-child {
     flex-direction: column;
     align-items: flex-start;

@@ -11,7 +11,7 @@ export default function TaxSummaryReport({ data }: TaxSummaryReportProps) {
       <div className="card" style={{ marginBottom: '1.5rem' }}>
         <h2>Tax Summary for {data.year}</h2>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2rem', marginTop: '2rem' }}>
+        <div className="demo-stats-grid-3" style={{ marginTop: '2rem' }}>
           <div style={{ textAlign: 'center' }}>
             <h3>Total Income</h3>
             <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#27ae60' }}>
@@ -41,6 +41,7 @@ export default function TaxSummaryReport({ data }: TaxSummaryReportProps) {
 
       <div className="card" style={{ marginBottom: '1.5rem' }}>
         <h3>Schedule C Categories (IRS)</h3>
+        <div className="table-wrapper">
         <table className="table">
           <thead>
             <tr>
@@ -53,36 +54,39 @@ export default function TaxSummaryReport({ data }: TaxSummaryReportProps) {
               .sort(([, a], [, b]) => b - a)
               .map(([category, amount]) => (
                 <tr key={category}>
-                  <td>{category}</td>
-                  <td>${amount.toFixed(2)}</td>
+                  <td data-label="IRS Category">{category}</td>
+                  <td data-label="Amount">${amount.toFixed(2)}</td>
                 </tr>
               ))}
             <tr style={{ fontWeight: 'bold', borderTop: '2px solid #000' }}>
-              <td>Total Expenses</td>
-              <td>${data.total_expenses.toFixed(2)}</td>
+              <td data-label="IRS Category">Total Expenses</td>
+              <td data-label="Amount">${data.total_expenses.toFixed(2)}</td>
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       <div className="card">
         <h3>Vehicle & Mileage Deduction</h3>
+        <div className="table-wrapper">
         <table className="table">
           <tbody>
             <tr>
-              <td>Total Business Miles</td>
-              <td><strong>{(data.total_business_miles || 0).toFixed(1)}</strong></td>
+              <td data-label="Item">Total Business Miles</td>
+              <td data-label="Value"><strong>{(data.total_business_miles || 0).toFixed(1)}</strong></td>
             </tr>
             <tr>
-              <td>IRS Standard Mileage Rate</td>
-              <td>${(data.total_business_miles && data.mileage_deduction ? (data.mileage_deduction / data.total_business_miles).toFixed(2) : '0.00')}/mile</td>
+              <td data-label="Item">IRS Standard Mileage Rate</td>
+              <td data-label="Value">${(data.total_business_miles && data.mileage_deduction ? (data.mileage_deduction / data.total_business_miles).toFixed(2) : '0.00')}/mile</td>
             </tr>
             <tr style={{ fontWeight: 'bold' }}>
-              <td>Total Mileage Deduction</td>
-              <td>${(data.mileage_deduction || 0).toFixed(2)}</td>
+              <td data-label="Item">Total Mileage Deduction</td>
+              <td data-label="Value">${(data.mileage_deduction || 0).toFixed(2)}</td>
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

@@ -59,7 +59,7 @@ export default function Reports() {
       </div>
 
       <div className="card" style={{ marginBottom: '1.5rem' }}>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+        <div className="demo-inline-filter-row" style={{ alignItems: 'center' }}>
           <div>
             <strong>Report Type:</strong>
           </div>
@@ -84,14 +84,13 @@ export default function Reports() {
         </div>
 
         {reportType !== 'tax-summary' && (
-          <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', alignItems: 'center' }}>
+          <div className="demo-reports-date-row">
             <label>
               <strong>From:</strong>
               <input
                 type="date"
                 value={dateRange.startDate}
                 onChange={(e) => setDateRange({ ...dateRange, startDate: e.target.value })}
-                style={{ marginLeft: '0.5rem' }}
               />
             </label>
             <label>
@@ -100,7 +99,6 @@ export default function Reports() {
                 type="date"
                 value={dateRange.endDate}
                 onChange={(e) => setDateRange({ ...dateRange, endDate: e.target.value })}
-                style={{ marginLeft: '0.5rem' }}
               />
             </label>
             <button className="btn btn-secondary btn-small" onClick={generateReport}>

@@ -110,6 +110,7 @@ export default function MileageReport({ entries, settings }: MileageReportProps)
         {months.length === 0 ? (
           <p>No business mileage recorded yet.</p>
         ) : (
+          <div className="table-wrapper">
           <table className="table">
             <thead>
               <tr>
@@ -122,14 +123,15 @@ export default function MileageReport({ entries, settings }: MileageReportProps)
             <tbody>
               {months.map((month) => (
                 <tr key={month}>
-                  <td><strong>{month}</strong></td>
-                  <td>{byMonth[month].miles.toFixed(1)}</td>
-                  <td>{byMonth[month].count}</td>
-                  <td>${(byMonth[month].miles * mileageRate).toFixed(2)}</td>
+                  <td data-label="Month"><strong>{month}</strong></td>
+                  <td data-label="Business Miles">{byMonth[month].miles.toFixed(1)}</td>
+                  <td data-label="Trips">{byMonth[month].count}</td>
+                  <td data-label="Deduction">${(byMonth[month].miles * mileageRate).toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
     </div>

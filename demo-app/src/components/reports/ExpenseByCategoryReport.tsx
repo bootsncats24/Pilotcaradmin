@@ -20,6 +20,7 @@ export default function ExpenseByCategoryReport({ data, dateRange }: ExpenseByCa
         </div>
       </div>
 
+      <div className="table-wrapper">
       <table className="table">
         <thead>
           <tr>
@@ -38,7 +39,7 @@ export default function ExpenseByCategoryReport({ data, dateRange }: ExpenseByCa
 
             return (
               <tr key={cat.category_id}>
-                <td>
+                <td data-label="Category">
                   <span
                     className="badge"
                     style={{ backgroundColor: cat.category_color || '#95a5a6' }}
@@ -46,11 +47,11 @@ export default function ExpenseByCategoryReport({ data, dateRange }: ExpenseByCa
                     {cat.category_name}
                   </span>
                 </td>
-                <td>{cat.transaction_count}</td>
-                <td><strong>${cat.total.toFixed(2)}</strong></td>
-                <td>${average.toFixed(2)}</td>
-                <td>{percentage.toFixed(1)}%</td>
-                <td>
+                <td data-label="Transactions">{cat.transaction_count}</td>
+                <td data-label="Total"><strong>${cat.total.toFixed(2)}</strong></td>
+                <td data-label="Average">${average.toFixed(2)}</td>
+                <td data-label="% of Total">{percentage.toFixed(1)}%</td>
+                <td data-label="Visual">
                   <div
                     style={{
                       width: `${percentage}%`,
@@ -66,6 +67,7 @@ export default function ExpenseByCategoryReport({ data, dateRange }: ExpenseByCa
           })}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

@@ -268,15 +268,15 @@ export default function Calendar() {
                   .sort((a, b) => a.run_date.localeCompare(b.run_date))
                   .map(run => (
                     <tr key={run.id}>
-                      <td>{formatLocalDate(run.run_date)}</td>
-                      <td>{run.description}</td>
-                      <td>{run.customer?.name || '-'}</td>
-                      <td>
+                      <td data-label="Date">{formatLocalDate(run.run_date)}</td>
+                      <td data-label="Description">{run.description}</td>
+                      <td data-label="Customer">{run.customer?.name || '-'}</td>
+                      <td data-label="From → To">
                         {run.from_location && run.to_location
                           ? `${run.from_location} → ${run.to_location}`
                           : run.destination?.name || '-'}
                       </td>
-                      <td>
+                      <td data-label="Status">
                         <span
                           className="badge"
                           style={{ backgroundColor: getStatusColor(run.status) }}
@@ -284,7 +284,7 @@ export default function Calendar() {
                           {run.status.charAt(0).toUpperCase() + run.status.slice(1)}
                         </span>
                       </td>
-                      <td>
+                      <td data-label="Actions">
                         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                           <button
                             className="btn btn-small btn-secondary"
