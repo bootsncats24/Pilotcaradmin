@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# local analytics (dev); production uses Netlify Blobs when NETLIFY=true
+/data/
+
 # production
 /build
 

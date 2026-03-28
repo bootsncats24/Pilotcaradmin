@@ -4,7 +4,8 @@ import FeaturePageLayout from '@/components/features/FeaturePageLayout';
 
 export const metadata: Metadata = {
   title: 'Invoicing Software | Pilot Car Admin',
-  description: 'Create and send professional invoices in minutes. Automatically add tracked time and expenses, calculate taxes, and track payment status.',
+  description:
+    'Pilot car invoicing by mile, mini run, day rate, hourly, chase/pole. Optional complementary mobile run log for fleets (CSV handoff). Invoice CSV Import and PDFs on Windows.',
 };
 
 export default function InvoicePage() {

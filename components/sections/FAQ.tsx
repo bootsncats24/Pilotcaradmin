@@ -36,7 +36,7 @@ const faqs: FAQItem[] = [
   {
     question: 'Does Pilot Car Admin 2026 work on mobile devices?',
     answer:
-      "Pilot Car Admin 2026 is built first for Windows desktop. A companion mobile app is being developed to handle mileage, expenses, and on-the-road tasks, with sync back to the desktop when you're on the same network. The desktop app is the primary place where all your data lives.",
+      "Pilot Car Admin 2026 is built first for Windows desktop. Mobile sync is available now on Android for mileage, expenses, and on-the-road tasks, with local sync back to desktop. iPhone support is planned later and will depend on user demand. The desktop app is still the primary place where your full business data lives.",
   },
   {
     question: 'Can I use Pilot Car Admin 2026 on multiple computers?',
@@ -77,6 +77,11 @@ const faqs: FAQItem[] = [
     question: 'What makes Pilot Car Admin different from generic invoicing software?',
     answer:
       'Pilot Car Admin 2026 is built specifically around how pilot car drivers actually work: run-based invoicing, mileage tracking, expenses for runs, scheduling, and business reporting, all designed for offline use with a one-time price instead of a subscription.',
+  },
+  {
+    question: 'Do fleets get an optional mobile run log with Pilot Car Admin?',
+    answer:
+      'There is an optional complementary phone app for logging runs in the field (no rates on the device). It is meant to work with Pilot Car Admin on Windows: drivers export CSV, and the office imports with Invoice CSV Import and bills in the same desktop app—not as a separate headline product.',
   },
 ];
 

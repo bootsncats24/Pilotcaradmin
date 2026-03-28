@@ -44,15 +44,11 @@ export default function AdminPanel() {
   const [uploading, setUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<string>('invoice');
-
-  // Check authentication on mount
-  useEffect(() => {
-    checkAuth();
-    if (isAuthenticated) {
-      loadImages();
-      loadMetadata();
-    }
-  }, [isAuthenticated]);
+  const [viewStats, setViewStats] = useState<{
+    totalPageViews: number;
+    uniqueVisitors: number;
+  } | null>(null);
+  const [analyticsLoading, setAnalyticsLoading] = useState(false);
 
   const checkAuth = async () => {
     try {
@@ -83,6 +79,7 @@ export default function AdminPanel() {
         setPassword('');
         loadImages();
         loadMetadata();
+        void loadAnalytics();
       } else {
         setError(data.error || 'Invalid password');
       }
@@ -106,6 +103,7 @@ export default function AdminPanel() {
       heroContent: null,
       testimonials: {},
     });
+    setViewStats(null);
   };
 
   const loadImages = async () => {
@@ -136,6 +134,36 @@ export default function AdminPanel() {
       console.error('Error loading metadata:', error);
     }
   };
+
+  const loadAnalytics = async () => {
+    setAnalyticsLoading(true);
+    try {
+      const res = await fetch('/api/admin/analytics');
+      if (res.ok) {
+        const data = await res.json();
+        setViewStats({
+          totalPageViews: Number(data.totalPageViews) || 0,
+          uniqueVisitors: Number(data.uniqueVisitors) || 0,
+        });
+      }
+    } catch (error) {
+      console.error('Error loading analytics:', error);
+    } finally {
+      setAnalyticsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    void checkAuth();
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      loadImages();
+      loadMetadata();
+      void loadAnalytics();
+    }
+  }, [isAuthenticated]);
 
   const handleFileUpload = async (file: File) => {
     if (!file.type.startsWith('image/')) {
@@ -264,8 +292,15 @@ export default function AdminPanel() {
   };
 
   const assignImage = (key: string, filename: string | null, section: 'hero' | 'heroContent' | 'features' | 'featureSections' | 'homeFeatures' | 'useCases' | 'testimonials') => {
-    // Update local state immediately for instant feedback
-    const newMetadata = { ...metadata };
+    // Shallow-clone nested maps so React state updates reliably (including field-run-log on All Features Page).
+    const newMetadata: ImageMetadata = {
+      ...metadata,
+      features: { ...metadata.features },
+      featureSections: { ...metadata.featureSections },
+      homeFeatures: { ...metadata.homeFeatures },
+      useCases: { ...metadata.useCases },
+      testimonials: { ...metadata.testimonials },
+    };
 
     if (section === 'hero') {
       newMetadata.hero = filename;
@@ -389,6 +424,45 @@ export default function AdminPanel() {
             {error}
           </div>
         )}
+
+        <div className="mb-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Site analytics</h2>
+              <p className="text-sm text-gray-600 mt-1 max-w-2xl">
+                <strong>Unique visitors</strong> are counted once per browser using a long-lived cookie (
+                <code className="text-xs bg-gray-100 px-1 rounded">pca_vid</code>
+                ). <strong>Page views</strong> increment on each public route change (excludes{' '}
+                <code className="text-xs bg-gray-100 px-1 rounded">/admin</code> and{' '}
+                <code className="text-xs bg-gray-100 px-1 rounded">/demo</code>
+                ). On Netlify, counts persist in Netlify Blobs; locally they are stored in{' '}
+                <code className="text-xs bg-gray-100 px-1 rounded">data/view-stats.json</code>.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => void loadAnalytics()}
+              disabled={analyticsLoading}
+              className="shrink-0 px-4 py-2 text-sm font-medium border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50"
+            >
+              {analyticsLoading ? 'Loading…' : 'Refresh'}
+            </button>
+          </div>
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="rounded-md bg-primary-50 border border-primary-100 p-4">
+              <p className="text-sm font-medium text-primary-900">Unique visitors</p>
+              <p className="text-3xl font-bold text-primary-800 tabular-nums">
+                {viewStats === null ? '—' : viewStats.uniqueVisitors.toLocaleString()}
+              </p>
+            </div>
+            <div className="rounded-md bg-slate-50 border border-slate-200 p-4">
+              <p className="text-sm font-medium text-slate-800">Total page views</p>
+              <p className="text-3xl font-bold text-slate-900 tabular-nums">
+                {viewStats === null ? '—' : viewStats.totalPageViews.toLocaleString()}
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* Save Button */}
         <div className="mb-6 flex justify-between items-center bg-yellow-50 border-2 border-yellow-200 rounded-lg p-4">
@@ -830,7 +904,8 @@ export default function AdminPanel() {
             <div>
               <h2 className="text-xl font-semibold mb-4">All Features Page Images</h2>
               <p className="text-sm text-gray-600 mb-4">
-                These images are used on the main <code>/features</code> page. Assign one image per feature card.
+                These images are used on the main <code>/features</code> page. Assign one image per feature card,
+                including <strong>Field run log (companion app · fleets)</strong> (<code>field-run-log</code>).
               </p>
               <div className="space-y-6">
                 {ALL_FEATURES_PAGE_ITEMS.map((slot) => (

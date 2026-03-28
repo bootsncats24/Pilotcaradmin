@@ -1,6 +1,6 @@
 import Card from '@/components/ui/Card';
 import Image from 'next/image';
-import imageMetadata from '@/lib/image-metadata.json';
+import { getImageMetadata } from '@/lib/imageUtils';
 import { FEATURE_IMAGE_KEYS } from '@/lib/all-features-page';
 
 interface FeatureDetail {
@@ -9,22 +9,41 @@ interface FeatureDetail {
   features: string[];
   imageSlug?: string; // Slug to look up image in homeFeatures
   badge?: string;
+  /** For in-page links, e.g. /features#field-run-log */
+  anchorId?: string;
 }
 
 const featureDetails: FeatureDetail[] = [
   {
     title: 'Professional Invoicing',
     description:
-      'Create and manage professional invoices with multiple billing types designed for pilot car drivers.',
+      'Create and manage professional invoices with multiple billing types designed for pilot car drivers. Fleets: the optional field run log companion app (next on this page) feeds the same Pilot Car Admin workflow via Invoice CSV Import.',
     features: [
       'Multiple billing types: By Mile, Mini Run, Day Rate, Hourly, Chase/Pole',
       'Custom extras and overnight rates',
       'Invoice status tracking (Draft, Sent, Paid, Overdue, Cancelled)',
       'PDF export and printing',
+      'Invoice CSV Import on desktop (including CSV from the optional mobile run log for fleets—same Pilot Car Admin workflow)',
       'Invoice reminders and overdue detection',
       'Search and filter invoices',
     ],
     imageSlug: 'invoice',
+  },
+  {
+    anchorId: 'field-run-log',
+    title: 'Field run log (companion app)',
+    description:
+      'Part of Pilot Car Admin for fleets who want drivers to capture runs on a phone. It is optional and complementary to desktop invoicing: no rates stored on the device—billing, rates, and PDF invoices stay in Pilot Car Admin on Windows. Drivers export CSV; the office imports with Invoice CSV Import.',
+    features: [
+      'Run list on the phone: add, edit, delete',
+      'Customer; invoice date and run date; from / to; billing type; miles or units; quantity; description; notes; overnight nights',
+      'Driver or truck name per run',
+      'Saved customers and destinations; CSV import for those lists',
+      'Export CSV aligned with Pilot Car Admin Invoice CSV Import',
+      'Share or email the file to the office',
+    ],
+    imageSlug: FEATURE_IMAGE_KEYS.fieldRunLog,
+    badge: 'With Pilot Car Admin',
   },
   {
     title: 'Expense Tracking',
@@ -96,7 +115,9 @@ const featureDetails: FeatureDetail[] = [
   },
 ];
 
-export default function FeaturesPage() {
+export default async function FeaturesPage() {
+  const imageMetadata = await getImageMetadata();
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -107,8 +128,7 @@ export default function FeaturesPage() {
               Powerful Features for Pilot Car Drivers
             </h1>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
-              Everything you need to manage your business efficiently and
-              professionally
+              Desktop invoicing, mileage, expenses, calendar, and offline operation—plus an optional field run log companion app for fleets (part of the same workflow).
             </p>
           </div>
         </div>
@@ -119,9 +139,9 @@ export default function FeaturesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
             {featureDetails.map((feature, index) => {
-              const imageFilename = feature.imageSlug 
-                ? (imageMetadata.features as Record<string, string | null>)[feature.imageSlug] ||
-                  (imageMetadata.homeFeatures as Record<string, string | null>)[feature.imageSlug]
+              const imageFilename = feature.imageSlug
+                ? imageMetadata.features[feature.imageSlug] ||
+                  imageMetadata.homeFeatures[feature.imageSlug]
                 : null;
               const imageUrl = imageFilename 
                 ? `/images/features/${imageFilename}`
@@ -129,7 +149,8 @@ export default function FeaturesPage() {
               const isEven = index % 2 === 0;
               
               return (
-                <Card key={index} className="hover:border-primary-300 overflow-hidden">
+                <div key={index} id={feature.anchorId} className={feature.anchorId ? 'scroll-mt-24' : undefined}>
+                <Card className="hover:border-primary-300 overflow-hidden">
                   <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}>
                     {/* Image Section */}
                     {imageUrl ? (
@@ -199,6 +220,7 @@ export default function FeaturesPage() {
                     </div>
                   </div>
                 </Card>
+                </div>
               );
             })}
           </div>

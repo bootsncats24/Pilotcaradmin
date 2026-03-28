@@ -32,7 +32,8 @@ const mainFeatures: Feature[] = [
     description: [
       'Invoices built for pilot car billing—not generic templates.',
       'Create invoices by mile, mini run, day rate, hourly, or chase/pole.',
-      'Add overnight rates and extras, track status, and export clean PDFs.'
+      'Add overnight rates and extras, track status, and export clean PDFs.',
+      'Fleets: optional complementary mobile run log (same workflow)—drivers export CSV; you import in Pilot Car Admin on the desktop.',
     ],
     learnMore: '/invoice',
     ctaText: 'View invoice examples',
@@ -60,8 +61,8 @@ const mainFeatures: Feature[] = [
   {
     title: 'Sync That Just Works',
     description: [
-      'Your data stays in sync between desktop and mobile (mobile app coming soon).',
-      'Offline-first with secure, bidirectional sync between devices. No accounts, no cloud dependency, no surprise conflicts once mobile is live.'
+      'Your data stays in sync between desktop and mobile, with Android available now.',
+      'Offline-first with secure, bidirectional sync between devices. No accounts, no cloud dependency. iPhone support is planned later based on demand.'
     ],
     learnMore: '/sync',
     ctaText: 'See sync in action',
@@ -355,7 +356,7 @@ export default function Features() {
           })}
         </div>
 
-        {/* Four-card bottom row (Offline, Expenses, Sync, Security) */}
+        {/* Four-card row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 lg:mb-16">
           {mainFeatures.slice(2, 6).map((feature, index) => {
             const slugMap: Record<string, string> = {

@@ -56,20 +56,38 @@ export default function AboutPage() {
                 <p className="text-lg text-gray-700 leading-relaxed mb-4">
                   I started developing Pilot Car Admin after more than 10 years working as a pilot car driver.
                 </p>
-                <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  One of the biggest problems I kept running into was invoicing. There wasn’t a simple program made for how pilot car drivers actually bill.
+                <p className="text-base text-primary-800 font-medium italic mb-4">
+                  {'\u2014'} Drew Ng
                 </p>
-                <div className="rounded-2xl border border-dashed border-primary-200 bg-primary-50/60 px-4 py-3 mb-4 text-sm sm:text-base text-primary-900 font-medium">
-                  We don’t bill like normal businesses. We bill by the loaded mile, total miles, or day rate.
-                </div>
                 <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  Most invoicing apps are built for generic industries — you type a description, type a price, and do all the math yourself. There’s little customization and nothing designed for the way pilot car jobs really work.
+                  One of the biggest problems I kept running into was invoicing.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  There wasn&apos;t a simple program made for how pilot car drivers actually bill.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  We don&apos;t bill like normal businesses.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  We bill by the loaded mile, total miles, or day rate.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  Most invoicing apps are built for generic industries.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  You type a description, type a price, and do all the math yourself.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  There&apos;s little customization and nothing designed for the way pilot car jobs really work.
                 </p>
                 <p className="text-lg text-gray-900 leading-relaxed font-semibold mb-4">
                   So I built the software I wish I had.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  With Pilot Car Admin, you simply enter your customer, put in the miles and job address, and the app handles the rest. It automatically calculates totals, generates professional invoices, and reminds you when invoices are past due.
+                  With Pilot Car Admin, you simply enter your customer, put in the miles and job address, and the app handles the rest.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  It automatically calculates totals, generates professional invoices, and reminds you when invoices are past due.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
                   It also includes expense tracking so you can manage the business side of pilot car driving in one place.

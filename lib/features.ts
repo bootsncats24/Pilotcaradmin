@@ -18,6 +18,8 @@ export interface FeatureData {
   tagline: string;
   description: string;
   heroDescription: string;
+  /** Short callout shown under the hero (e.g. new capability). */
+  heroHighlight?: string;
   sections: FeatureSection[];
   faqs: FeatureFAQ[];
   relatedFeatures: string[];
@@ -30,7 +32,8 @@ export const featuresData: Record<string, FeatureData> = {
     title: 'Invoicing',
     tagline: 'Professional invoicing built for pilot car operators',
     description: 'Create professional invoices with multiple billing types, track payment status automatically, and export PDFs. Perfect for pilot car businesses that need flexible billing options.',
-    heroDescription: 'Create professional invoices in minutes with multiple billing types, automatic status tracking, and PDF export. Track runs, destinations, and payments all in one place.',
+    heroDescription:
+      'Create professional invoices in minutes with multiple billing types, automatic status tracking, and PDF export. Track runs, destinations, and payments all in one place.',
     sections: [
       {
         title: 'Flexible billing for every type of run',
@@ -57,13 +60,16 @@ export const featuresData: Record<string, FeatureData> = {
       },
       {
         title: 'Professional invoices ready to share',
-        description: 'Export professional PDF invoices with your company logo and branding. Print invoices directly or share them via email. Import invoices from CSV for bulk operations.',
+        description:
+          'Export professional PDF invoices with your company logo and branding. Print invoices directly or share them via email. Invoice CSV Import on the desktop pulls in bulk lines from spreadsheets—or from a CSV drivers exported from the optional complementary phone app (fleets), which only exists to feed this same Pilot Car Admin workflow; rates and PDFs stay here on Windows.',
         features: [
           'PDF export with company logo and branding',
           'Print invoices directly from the app',
-          'CSV import for bulk invoice creation',
+          'Invoice CSV Import for bulk lines with column mapping',
           'Custom invoice option (simple line items for non-standard billing)',
           'Customer and destination management',
+          'Fleets — optional complementary mobile run log: drivers log runs on a phone (no rates there); export CSV; office imports in Pilot Car Admin above',
+          'Phone app includes saved customers/places, driver or truck per run, overnight nights—aligned with Admin import columns',
         ],
       },
     ],
@@ -90,7 +96,12 @@ export const featuresData: Record<string, FeatureData> = {
       },
       {
         question: 'Can I import invoices from a spreadsheet?',
-        answer: 'Yes! Pilot Car Admin supports CSV import for bulk invoice creation. Export your invoice data from a spreadsheet and import it directly into the app.',
+        answer: 'Yes. Pilot Car Admin includes Invoice CSV Import on the desktop. You map columns (customer, dates, billing type, miles, from/to, description, notes, overnight nights, and more) and preview before committing. That is the office-side tool—not the same thing as the field app.',
+      },
+      {
+        question: 'Is there an optional mobile run log for fleets?',
+        answer:
+          'Yes—optional, and it goes with Pilot Car Admin. It is a small companion for drivers to log runs on a phone (no rates stored there). They export CSV; the office imports with Invoice CSV Import in Pilot Car Admin on Windows, where rates, invoices, and PDFs are handled.',
       },
     ],
     relatedFeatures: ['expenses', 'mileage-tracking'],

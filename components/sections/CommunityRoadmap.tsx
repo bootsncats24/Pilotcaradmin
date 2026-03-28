@@ -36,7 +36,7 @@ export default function CommunityRoadmap() {
                   Next 2 Months
                 </p>
                 <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Complete the mobile app and launch the first public beta.
+                  Expand Android sync improvements and evaluate iPhone release timing based on user demand.
                 </p>
               </div>
               <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">

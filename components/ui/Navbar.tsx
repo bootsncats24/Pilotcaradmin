@@ -61,6 +61,7 @@ export default function Navbar() {
       label: 'Features',
       dropdown: [
         { href: '/invoice', label: 'Invoicing' },
+        { href: '/features#field-run-log', label: 'Field run log (companion)' },
         { href: '/expenses', label: 'Expenses' },
         { href: '/mileage-tracking', label: 'Mileage Tracking' },
         { href: '/calendar', label: 'Calendar & Scheduling' },

@@ -40,6 +40,16 @@ export default function FeatureHero({ feature }: FeatureHeroProps) {
             {feature.description}
           </p>
 
+          {feature.heroHighlight ? (
+            <div
+              className="max-w-3xl mx-auto mb-10 px-5 py-4 rounded-2xl bg-amber-400/95 text-gray-900 text-base sm:text-lg font-semibold leading-snug shadow-lg border-2 border-amber-200 animate-fade-in"
+              style={{ animationDelay: '0.25s' }}
+              role="note"
+            >
+              {feature.heroHighlight}
+            </div>
+          ) : null}
+
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button href="/pricing" variant="primary" className="bg-white text-primary-800 hover:bg-primary-50 text-lg px-8 py-4">

@@ -81,6 +81,18 @@ export default function PricingPage() {
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-800">
                   <li>✔ Windows desktop application</li>
+                  <li>
+                    ✔ <strong>Pilot Car Admin mobile</strong> — included with your license; sync
+                    mileage, expenses, invoices, and the rest of your data with the desktop app.{' '}
+                    <strong>Android first</strong> at launch; <strong>iPhone</strong> version in
+                    development.
+                  </li>
+                  <li>
+                    ✔ <strong>Driver App</strong> — included with your license; a{' '}
+                    <strong>separate</strong> app for fleet <strong>field run logging</strong> on
+                    the phone (no rates on the device). Drivers export CSV; the office imports with
+                    Invoice CSV Import in Pilot Car Admin on Windows.
+                  </li>
                   <li>✔ Professional invoicing for pilot car runs</li>
                   <li>✔ Mileage tracking for tax deductions</li>
                   <li>✔ Expense and receipt tracking</li>
@@ -101,27 +113,61 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Mobile Companion */}
+      {/* Pilot Car Admin mobile: full sync companion (distinct from Driver App below) */}
       <section className="py-6">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card>
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-              Mobile Companion (Coming Soon)
+              Pilot Car Admin (mobile)
             </h2>
-            <p className="text-sm text-gray-700 mb-3">
-              An Android companion app is currently under development.
+            <p className="text-sm font-medium text-gray-500 mb-3 uppercase tracking-wide">
+              Same product on your phone · syncs with desktop · included with your license
             </p>
             <p className="text-sm text-gray-700 mb-3">
-              The mobile version will allow drivers to:
+              This is the <strong>Pilot Car Admin</strong> mobile app—the one that keeps your
+              business data in sync with the Windows app. It launches with Pilot Car Admin—{' '}
+              <strong>Android first</strong>. The <strong>iPhone</strong> app is currently under
+              development.
             </p>
+            <p className="text-sm text-gray-700 mb-3">On your phone you can:</p>
             <ul className="list-disc list-inside text-sm text-gray-800 space-y-1 mb-3">
-              <li>track mileage while on the road</li>
-              <li>record expenses and receipts</li>
-              <li>sync data with the desktop application</li>
+              <li>track mileage and expenses (including receipt capture)</li>
+              <li>work with invoices, customers, and transactions</li>
+              <li>sync securely with the desktop application on your network</li>
             </ul>
             <p className="text-sm text-gray-700">
-              Pilot Car Admin users will receive access to the companion app as development
-              continues.
+              Your desktop license includes Pilot Car Admin mobile for <strong>Android</strong> at
+              launch. iPhone access will follow when the iOS app ships.
+            </p>
+          </Card>
+        </div>
+      </section>
+
+      {/* Driver App: fleet field run log (Pilot Car Driver Log) — CSV handoff to desktop */}
+      <section className="py-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Driver App</h2>
+            <p className="text-sm font-medium text-gray-500 mb-3 uppercase tracking-wide">
+              Separate app · field run log for fleets · included with your license
+            </p>
+            <p className="text-sm text-gray-700 mb-3">
+              The <strong>Driver App</strong> is <strong>not</strong> Pilot Car Admin mobile. It is a
+              small, focused app (field run log) for fleets: drivers capture runs on a phone,{' '}
+              <strong>without storing rates</strong> there. Billing, rates, and PDF invoices stay in
+              Pilot Car Admin on Windows.
+            </p>
+            <p className="text-sm text-gray-700 mb-3">Drivers can:</p>
+            <ul className="list-disc list-inside text-sm text-gray-800 space-y-1 mb-3">
+              <li>maintain a run list (add, edit, delete)</li>
+              <li>record customer, dates, from/to, billing type, miles or units, notes, and more</li>
+              <li>use saved customers and destinations (including CSV import for those lists)</li>
+              <li>export CSV aligned with Pilot Car Admin <strong>Invoice CSV Import</strong></li>
+              <li>share or email the file to the office</li>
+            </ul>
+            <p className="text-sm text-gray-700">
+              Your purchase includes the Driver App alongside the desktop license. Use it only if
+              your workflow needs the driver-to-office CSV handoff.
             </p>
           </Card>
         </div>

@@ -1,11 +1,11 @@
 import Button from '../ui/Button';
+import HeroLiveDemoFrame from '../demo/HeroLiveDemoFrame';
 import { getImageMetadata } from '@/lib/imageUtils';
 import Image from 'next/image';
 
 export default async function Hero() {
   const imageMetadata = await getImageMetadata();
   const heroImageUrl = imageMetadata.hero ? `/images/features/${imageMetadata.hero}` : null;
-  const heroContentImageUrl = imageMetadata.heroContent ? `/images/features/${imageMetadata.heroContent}` : null;
 
   return (
     <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-16 lg:py-28 overflow-hidden">
@@ -109,7 +109,7 @@ export default async function Hero() {
             Professional invoicing and expense tracking designed from real pilot car work.
             <br className="hidden sm:block" />
             <span className="text-white font-semibold">
-              Works offline now, with mobile sync coming soon.
+              Works offline with mobile sync live on Android now. iPhone is planned later based on demand.
             </span>
           </p>
 
@@ -163,63 +163,19 @@ export default async function Hero() {
           </div>
           </div>
 
-          {/* Right Column - App Preview/Mockup */}
-          <div className="hidden lg:block relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          {/* Right Column - Live demo embed (narrower card on small phones, taller iframe in frame component) */}
+          <div
+            className="relative mt-8 sm:mt-10 lg:mt-0 animate-fade-in w-full max-w-md sm:max-w-xl mx-auto lg:mx-0 lg:max-w-none"
+            style={{ animationDelay: '0.3s' }}
+          >
             <div className="relative">
-              {/* Glow effect behind mockup */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-400/30 via-primary-300/40 to-primary-400/30 blur-3xl rounded-3xl transform scale-110"></div>
-              
-              {heroContentImageUrl ? (
-                /* Custom image content */
-                <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-8 transform hover:scale-105 transition-all duration-500 overflow-hidden">
-                  <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden">
-                    <Image
-                      src={heroContentImageUrl}
-                      alt="App Preview"
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 1024px) 0vw, 50vw"
-                    />
-                  </div>
-                  {/* Floating badge */}
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-primary-400 to-primary-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl animate-bounce-slow">
-                    ✨ New
-                  </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-400/30 via-primary-300/40 to-primary-400/30 blur-3xl rounded-3xl transform scale-110" />
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/20 shadow-2xl p-3 sm:p-5 lg:p-8 lg:transform lg:hover:scale-[1.02] transition-transform duration-500">
+                <HeroLiveDemoFrame />
+                <div className="absolute top-2 right-2 sm:-top-3 sm:-right-3 lg:-top-4 lg:-right-4 bg-gradient-to-r from-primary-400 to-primary-500 text-white px-2.5 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 rounded-full text-[11px] sm:text-xs lg:text-sm font-bold shadow-lg sm:shadow-xl sm:animate-bounce-slow pointer-events-none">
+                  Live
                 </div>
-              ) : (
-                /* Default mockup container */
-                <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-8 transform hover:scale-105 transition-all duration-500">
-                  {/* Mockup header */}
-                  <div className="flex items-center gap-2 mb-6">
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-400/80"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-400/80"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-400/80"></div>
-                    </div>
-                    <div className="flex-1 h-6 bg-white/10 rounded-lg"></div>
-                  </div>
-                  
-                  {/* Mockup content - App preview */}
-                  <div className="space-y-4">
-                    <div className="h-8 bg-white/10 rounded-lg"></div>
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="h-20 bg-gradient-to-br from-primary-400/20 to-primary-500/20 rounded-lg border border-white/10"></div>
-                      <div className="h-20 bg-gradient-to-br from-primary-300/20 to-primary-400/20 rounded-lg border border-white/10"></div>
-                      <div className="h-20 bg-gradient-to-br from-primary-500/20 to-primary-600/20 rounded-lg border border-white/10"></div>
-                    </div>
-                    <div className="h-32 bg-white/5 rounded-lg border border-white/10 p-4 space-y-2">
-                      <div className="h-4 bg-white/10 rounded w-3/4"></div>
-                      <div className="h-4 bg-white/10 rounded w-1/2"></div>
-                      <div className="h-4 bg-white/10 rounded w-2/3"></div>
-                    </div>
-                  </div>
-
-                  {/* Floating badge */}
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-primary-400 to-primary-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl animate-bounce-slow">
-                    ✨ New
-                  </div>
-                </div>
-              )}
+              </div>
             </div>
           </div>
         </div>

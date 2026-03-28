@@ -117,6 +117,21 @@ const guideSections: GuideSection[] = [
           'Includes all invoice details, line items, and totals',
         ],
       },
+      {
+        title: 'Invoice CSV Import (office)',
+        content: [
+          'In Pilot Car Admin on Windows, use Invoice CSV Import to create or preview many invoice lines from a CSV file',
+          'Map columns to match your file (customer, dates, billing type, miles, from/to, description, quantity, overnight nights, notes, driver/truck, etc.)',
+        ],
+      },
+      {
+        title: 'Optional mobile run log (fleets — with Pilot Car Admin)',
+        content: [
+          'Optional complementary app for drivers: log runs on a phone with no rates on the device',
+          'Export CSV to the office; same Pilot Car Admin install uses Invoice CSV Import to pull those rows into invoices',
+          'Billing, rates, and PDFs stay in Pilot Car Admin on the desktop—it is one workflow, not a second product',
+        ],
+      },
     ],
   },
   {

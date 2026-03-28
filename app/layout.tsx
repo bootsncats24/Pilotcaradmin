@@ -17,7 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Pilot Car Admin 2026 - Business Management for Pilot Car Drivers",
-  description: "Professional invoicing, expense tracking, and business management made simple for pilot car drivers. Works offline now, with mobile sync coming soon.",
+  description:
+    "Pilot Car Admin 2026: offline invoicing, expenses, mileage, and calendar for pilot car work. Android mobile sync is available now, with iPhone support planned later based on demand.",
   icons: {
     icon: '/pilotcaradminlogo.png',
   },
